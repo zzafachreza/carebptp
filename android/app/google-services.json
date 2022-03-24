@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1047346037442",
+    "project_id": "care-bptp",
+    "storage_bucket": "care-bptp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047346037442:android:3725aac4f63960f7fef15b",
+        "android_client_info": {
+          "package_name": "com.carebptp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047346037442-kapvamaqu79gm6lb25rqkds4e7sfslmu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8ucfj5hJh6yycpLPxCXlcAUiu2WzbiNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047346037442-kapvamaqu79gm6lb25rqkds4e7sfslmu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
