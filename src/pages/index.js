@@ -49,6 +49,7 @@ import Visimisi2 from './Visimisi2';
 import Visimisi3 from './Visimisi3';
 import Visimisi4 from './Visimisi4';
 import Visimisi5 from './Visimisi5';
+import Tagrimart from './Tagrimart';
 
 
 
@@ -58,8 +59,10 @@ import Visimisi5 from './Visimisi5';
 
 export {
   Splash,
+  Tagrimart,
   PengaduanUpdate,
   Visimisi,
+
   Visimisi2,
   Visimisi3,
   Visimisi4,

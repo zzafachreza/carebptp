@@ -50,7 +50,7 @@ export default function Home({ navigation }) {
 
       PushNotification.localNotification({
         /* Android Only Properties */
-        channelId: 'mysukha_tri_sukma', // (required) channelId, if the channel doesn't exist, notification will not trigger.
+        channelId: 'carbptp_zavalabs', // (required) channelId, if the channel doesn't exist, notification will not trigger.
         title: obj.notification.title, // (optional)
         message: obj.notification.body, // (required)
       });
@@ -268,9 +268,9 @@ export default function Home({ navigation }) {
           <DataKategori
             warna={colors.primary}
             onPress={() => navigation.navigate('ListData')}
-            icon="people-outline"
+            icon="flask-outline"
             nama="Layanan"
-            nama2="Kerjasama"
+            nama2="Laboratorium (Uji Tanah)"
           />
         </View>
 
@@ -315,9 +315,74 @@ export default function Home({ navigation }) {
             warna={colors.primary}
             onPress={() => navigation.navigate('ListData')}
             icon="file-tray-stacked-outline"
+            nama="Layanan Penyediaan"
+            nama2="Benih Sumber Melalui UPBS"
+          />
+        </View>
+
+        <View
+          style={{
+            paddingHorizontal: 10,
+            flexDirection: 'row',
+            marginTop: 5,
+          }}>
+
+
+          <DataKategori
+            warna={colors.primary}
+            onPress={() => navigation.navigate('ListData')}
+            icon="cube-outline"
             nama="Layanan Alat"
             nama2="dan Mesin Pertanian"
           />
+          <DataKategori
+            warna={colors.primary}
+            onPress={() => navigation.navigate('Pengaduan')}
+            icon="flower-outline"
+            nama="Layanan"
+            nama2="Kebun Percobaan"
+          />
+        </View>
+
+        <View
+          style={{
+            paddingHorizontal: 10,
+            flexDirection: 'row',
+            marginTop: 5,
+          }}>
+
+
+          <DataKategori
+            warna={colors.primary}
+            onPress={() => navigation.navigate('ListData')}
+            icon="color-fill-outline"
+            nama="Layanan Peminjaman"
+            nama2="Alat Mesin Pertanian"
+          />
+          <DataKategori
+            warna={colors.primary}
+            onPress={() => navigation.navigate('Pengaduan')}
+            icon="radio-outline"
+            nama="Layanan"
+            nama2="Radio"
+          />
+        </View>
+        <View
+          style={{
+            paddingHorizontal: 10,
+            flexDirection: 'row',
+            marginTop: 5,
+          }}>
+
+
+          <DataKategori
+            warna={colors.primary}
+            onPress={() => navigation.navigate('ListData')}
+            icon="search-outline"
+            nama="Layanan"
+            nama2="Kerjasama Penelitian"
+          />
+
         </View>
 
         {/*  */}

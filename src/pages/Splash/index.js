@@ -74,7 +74,7 @@ export default function Splash({ navigation }) {
         console.log('sudah login logon');
 
         setTimeout(() => {
-          navigation.replace('MainApp');
+          navigation.replace('Visimisi');
         }, 1500);
       }
     });

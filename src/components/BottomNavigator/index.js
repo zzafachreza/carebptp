@@ -19,7 +19,7 @@ export default function BottomNavigator({ state, descriptors, navigation }) {
   }
 
   return (
-    <View style={{ backgroundColor: colors.primary, flexDirection: 'row' }}>
+    <View style={{ backgroundColor: colors.white, flexDirection: 'row' }}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
@@ -56,8 +56,8 @@ export default function BottomNavigator({ state, descriptors, navigation }) {
           iconName = 'home-outline';
         } else if (label === 'Account') {
           iconName = 'person-outline';
-        } else if (label === 'Laporan') {
-          iconName = 'grid-outline';
+        } else if (label === 'Tagrimart') {
+          iconName = 'cart-outline';
         } else if (label === 'Asset') {
           iconName = 'file-tray-stacked-outline';
         } else if (label === 'Cart') {
@@ -105,13 +105,13 @@ export default function BottomNavigator({ state, descriptors, navigation }) {
                   name={isFocused ? iconName.replace('-outline', '') : iconName}
                   type="ionicon"
                   size={windowWidth / 20}
-                  color={isFocused ? colors.white : colors.white}
+                  color={isFocused ? colors.primary : colors.primary}
                 />
 
                 <Text
                   style={{
                     fontSize: windowWidth / 45,
-                    color: isFocused ? colors.white : colors.white,
+                    color: isFocused ? colors.primary : colors.primary,
                   }}>
                   {label == 'ChatWa' ? 'Chat' : label}
                 </Text>

@@ -60,6 +60,7 @@ import {
   Visimisi3,
   Visimisi4,
   Visimisi5,
+  Tagrimart,
 } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../components';
@@ -72,7 +73,7 @@ const MainApp = () => {
   return (
     <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
       <Tab.Screen name="Home" component={Home} />
-      {/* <Tab.Screen name="Asset" component={Asset} /> */}
+      <Tab.Screen name="Tagrimart" component={Tagrimart} />
       {/* <Tab.Screen name="ListRedeem" component={ListRedeem} />
       <Tab.Screen name="Cart" component={Cart} />  */}
       {/* <Tab.Screen name="Notifikasi" component={Notifikasi} /> */}
@@ -103,6 +104,21 @@ export default function Router() {
         component={Visimisi}
         options={{
           headerShown: false,
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
         }}
       />
 
@@ -111,6 +127,21 @@ export default function Router() {
         component={Visimisi2}
         options={{
           headerShown: false,
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
         }}
       />
       <Stack.Screen
@@ -118,6 +149,21 @@ export default function Router() {
         component={Visimisi3}
         options={{
           headerShown: false,
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
         }}
       />
       <Stack.Screen
@@ -125,6 +171,21 @@ export default function Router() {
         component={Visimisi4}
         options={{
           headerShown: false,
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
         }}
       />
       <Stack.Screen
@@ -132,6 +193,21 @@ export default function Router() {
         component={Visimisi5}
         options={{
           headerShown: false,
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
         }}
       />
 
