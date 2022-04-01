@@ -16,15 +16,15 @@ import { fonts } from '../../utils/fonts';
 import { Icon } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function MyCarouser() {
+export default function MyCarouser({ jenis = 1 }) {
   const [activeSlide, setActiveSlide] = useState(0);
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
   const navigation = useNavigation();
 
   useEffect(() => {
-    axios.get('https://carebptp.zavalabs.com/api/slider.php').then(res => {
-      console.log(res.data);
+    axios.get('https://carebptp.zavalabs.com/api/slider.php?jenis=' + jenis).then(res => {
+      console.log('slider', res.data);
       setData(res.data);
     });
   }, []);

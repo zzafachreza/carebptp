@@ -50,6 +50,14 @@ import Visimisi3 from './Visimisi3';
 import Visimisi4 from './Visimisi4';
 import Visimisi5 from './Visimisi5';
 import Tagrimart from './Tagrimart';
+import Menu1_konsultasi from './Menu1_konsultasi';
+import Menu3_study from './Menu3_study';
+import Menu4_magang from './Menu4_magang';
+import Menu6_upbs from './Menu6_upbs';
+import Menu7_alat from './Menu7_alat';
+import Menu10_radio from './Menu10_radio';
+
+
 
 
 
@@ -67,6 +75,15 @@ export {
   Visimisi3,
   Visimisi4,
   Visimisi5,
+
+  Menu1_konsultasi,
+  Menu3_study,
+  Menu4_magang,
+  Menu6_upbs,
+  Menu7_alat,
+  Menu10_radio,
+
+
   Pengaduan,
   Survey, PengaduanPrint,
   SurveyHasil,

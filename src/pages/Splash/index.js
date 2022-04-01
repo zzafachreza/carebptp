@@ -74,7 +74,7 @@ export default function Splash({ navigation }) {
         console.log('sudah login logon');
 
         setTimeout(() => {
-          navigation.replace('Visimisi');
+          navigation.replace('MainApp');
         }, 1500);
       }
     });
@@ -85,8 +85,7 @@ export default function Splash({ navigation }) {
       <View
         style={{
           flex: 1,
-          paddingTop: windowHeight / 7,
-          backgroundColor: colors.primary,
+          backgroundColor: colors.white,
           justifyContent: 'center',
         }}>
         <View
@@ -95,57 +94,20 @@ export default function Splash({ navigation }) {
             alignItems: 'center',
           }}>
           <Animated.Image
-            source={require('../../assets/logo_utama.png')}
+            source={require('../../assets/logo_splash.png')}
             style={{
               resizeMode: 'contain',
-              // resizeMode: 'center',
-
-              height: 200,
+              height: 360,
               aspectRatio: scaleLogo,
             }}
           />
         </View>
-        <Animated.View
-          style={{
-            top: scaleText,
-            padding: 15,
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}>
-          <Text
-            style={{
-              fontFamily: fonts.secondary[800],
-              fontSize: windowWidth / 7,
-              color: colors.white,
-              textAlign: 'center',
-            }}>
-            CARE BPTP
-          </Text>
-          <Text
-            style={{
-              fontFamily: fonts.tertiary[600],
-              fontSize: windowWidth / 10,
-              color: colors.tertiary,
-              textAlign: 'center',
-            }}>
-            Sulawesi Tengah
-          </Text>
-          <Animated.Image
-            source={require('../../assets/cek.png')}
-            style={{
-              resizeMode: 'contain',
-              // resizeMode: 'center',
 
-              height: 300,
-              // width: 300,
-              aspectRatio: scaleLogo2,
-            }}
-          />
 
-        </Animated.View>
+
 
       </View>
-    </SafeAreaView>
+    </SafeAreaView >
   );
 }
 

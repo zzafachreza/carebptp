@@ -41,55 +41,12 @@ export default function Home({ navigation }) {
 
 
   useEffect(() => {
-
-
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-
-      const json = JSON.stringify(remoteMessage);
-      const obj = JSON.parse(json);
-
-      PushNotification.localNotification({
-        /* Android Only Properties */
-        channelId: 'carbptp_zavalabs', // (required) channelId, if the channel doesn't exist, notification will not trigger.
-        title: obj.notification.title, // (optional)
-        message: obj.notification.body, // (required)
-      });
-    });
-
-
-
-
-    getData('company').then(res => {
-      setCompany(res);
-    });
-
-    getData('tipe').then(res => {
-      setTipe(res);
-    });
-
     getData('user').then(users => {
       console.log(users);
       setUser(users);
-
-
-      getData('token').then(res => {
-        console.log('data token,', res);
-        setToken(res.token);
-
-        axios
-          .post('https://carebptp.zavalabs.com/api/update_token.php', {
-            id: users.id,
-            token: res.token,
-          })
-          .then(res => {
-            console.error('update token', res.data);
-          });
-      });
-
-
     });
 
-    return unsubscribe;
+
   }, []);
 
   const windowWidth = Dimensions.get('window').width;
@@ -260,7 +217,7 @@ export default function Home({ navigation }) {
 
           <DataKategori
             warna={colors.primary}
-            onPress={() => navigation.navigate('Pengaduan')}
+            onPress={() => navigation.navigate('Menu1_konsultasi')}
             icon="hardware-chip-outline"
             nama="Konsultasi dan Rekomendasi"
             nama2="Inovasi Teknologi Pertanian"
@@ -283,14 +240,14 @@ export default function Home({ navigation }) {
 
           <DataKategori
             warna={colors.primary}
-            onPress={() => navigation.navigate('Pengaduan')}
+            onPress={() => navigation.navigate('Menu3_study')}
             icon="school-outline"
             nama="Layanan Study banding"
             nama2="dan kunjungan edukatif"
           />
           <DataKategori
             warna={colors.primary}
-            onPress={() => navigation.navigate('ListData')}
+            onPress={() => navigation.navigate('Menu4_magang')}
             icon="ribbon-outline"
             nama="Layanan Magang"
             nama2="PKL/Prakerin"
@@ -313,7 +270,7 @@ export default function Home({ navigation }) {
           />
           <DataKategori
             warna={colors.primary}
-            onPress={() => navigation.navigate('ListData')}
+            onPress={() => navigation.navigate('Menu6_upbs')}
             icon="file-tray-stacked-outline"
             nama="Layanan Penyediaan"
             nama2="Benih Sumber Melalui UPBS"
@@ -330,14 +287,14 @@ export default function Home({ navigation }) {
 
           <DataKategori
             warna={colors.primary}
-            onPress={() => navigation.navigate('ListData')}
+            onPress={() => navigation.navigate('Menu7_alat')}
             icon="cube-outline"
             nama="Layanan Alat"
             nama2="dan Mesin Pertanian"
           />
           <DataKategori
             warna={colors.primary}
-            onPress={() => navigation.navigate('Pengaduan')}
+            onPress={() => navigation.navigate('Menu8_kebun')}
             icon="flower-outline"
             nama="Layanan"
             nama2="Kebun Percobaan"
@@ -354,14 +311,14 @@ export default function Home({ navigation }) {
 
           <DataKategori
             warna={colors.primary}
-            onPress={() => navigation.navigate('ListData')}
+            onPress={() => navigation.navigate('Menu9_pinjam')}
             icon="color-fill-outline"
             nama="Layanan Peminjaman"
             nama2="Alat Mesin Pertanian"
           />
           <DataKategori
             warna={colors.primary}
-            onPress={() => navigation.navigate('Pengaduan')}
+            onPress={() => navigation.navigate('Menu10_radio')}
             icon="radio-outline"
             nama="Layanan"
             nama2="Radio"
@@ -377,7 +334,7 @@ export default function Home({ navigation }) {
 
           <DataKategori
             warna={colors.primary}
-            onPress={() => navigation.navigate('ListData')}
+            onPress={() => navigation.navigate('Menu1_kerjasama')}
             icon="search-outline"
             nama="Layanan"
             nama2="Kerjasama Penelitian"

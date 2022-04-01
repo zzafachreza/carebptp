@@ -61,6 +61,12 @@ import {
   Visimisi4,
   Visimisi5,
   Tagrimart,
+  Menu1_konsultasi,
+  Menu3_study,
+  Menu4_magang,
+  Menu6_upbs,
+  Menu7_alat,
+  Menu10_radio,
 } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../components';
@@ -317,6 +323,176 @@ export default function Router() {
         component={Pengaduan}
         options={{
           headerTitle: 'BUAT PENGADUAN',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
+
+      <Stack.Screen
+        name="Menu1_konsultasi"
+        component={Menu1_konsultasi}
+        options={{
+          headerTitle: 'Formulir Care BPTP Sulawesi Tengah',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
+
+      <Stack.Screen
+        name="Menu3_study"
+        component={Menu3_study}
+        options={{
+          headerTitle: 'Formulir Care BPTP Sulawesi Tengah',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="Menu4_magang"
+        component={Menu4_magang}
+        options={{
+          headerTitle: 'Formulir Care BPTP Sulawesi Tengah',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="Menu6_upbs"
+        component={Menu6_upbs}
+        options={{
+          headerTitle: 'Formulir Care BPTP Sulawesi Tengah',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="Menu7_alat"
+        component={Menu7_alat}
+        options={{
+          headerTitle: 'Formulir Care BPTP Sulawesi Tengah',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="Menu10_radio"
+        component={Menu10_radio}
+        options={{
+          headerTitle: 'Formulir Care BPTP Sulawesi Tengah',
           headerTintColor: 'white',
           headerStyle: {
             backgroundColor: colors.primary,
