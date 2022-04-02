@@ -224,7 +224,7 @@ export default function Home({ navigation }) {
           />
           <DataKategori
             warna={colors.primary}
-            onPress={() => navigation.navigate('ListData')}
+            onPress={() => navigation.navigate('Menu2_lab')}
             icon="flask-outline"
             nama="Layanan"
             nama2="Laboratorium (Uji Tanah)"
@@ -263,7 +263,7 @@ export default function Home({ navigation }) {
 
           <DataKategori
             warna={colors.primary}
-            onPress={() => navigation.navigate('Pengaduan')}
+            onPress={() => navigation.navigate('Menu5_perpus')}
             icon="library-outline"
             nama="Layanan"
             nama2="Perpustakaan"
@@ -334,7 +334,7 @@ export default function Home({ navigation }) {
 
           <DataKategori
             warna={colors.primary}
-            onPress={() => navigation.navigate('Menu1_kerjasama')}
+            onPress={() => navigation.navigate('Menu11_kerjasama')}
             icon="search-outline"
             nama="Layanan"
             nama2="Kerjasama Penelitian"

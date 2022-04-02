@@ -56,6 +56,13 @@ import Menu4_magang from './Menu4_magang';
 import Menu6_upbs from './Menu6_upbs';
 import Menu7_alat from './Menu7_alat';
 import Menu10_radio from './Menu10_radio';
+import Menu2_lab from './Menu2_lab';
+import Menu8_kebun from './Menu8_kebun';
+import Menu5_perpus from './Menu5_perpus';
+import Menu9_pinjam from './Menu9_pinjam';
+import Menu11_kerjasama from './Menu11_kerjasama';
+
+
 
 
 
@@ -82,6 +89,11 @@ export {
   Menu6_upbs,
   Menu7_alat,
   Menu10_radio,
+  Menu2_lab,
+  Menu8_kebun,
+  Menu5_perpus,
+  Menu9_pinjam,
+  Menu11_kerjasama,
 
 
   Pengaduan,

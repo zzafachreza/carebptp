@@ -67,6 +67,11 @@ import {
   Menu6_upbs,
   Menu7_alat,
   Menu10_radio,
+  Menu2_lab,
+  Menu5_perpus,
+  Menu8_kebun,
+  Menu9_pinjam,
+  Menu11_kerjasama
 } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../components';
@@ -374,6 +379,34 @@ export default function Router() {
           },
         }}
       />
+      <Stack.Screen
+        name="Menu2_lab"
+        component={Menu2_lab}
+        options={{
+          headerTitle: 'Formulir Care BPTP Sulawesi Tengah',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
 
 
       <Stack.Screen
@@ -404,6 +437,7 @@ export default function Router() {
         }}
       />
 
+
       <Stack.Screen
         name="Menu4_magang"
         component={Menu4_magang}
@@ -431,6 +465,35 @@ export default function Router() {
           },
         }}
       />
+
+      <Stack.Screen
+        name="Menu5_perpus"
+        component={Menu5_perpus}
+        options={{
+          headerTitle: 'Formulir Care BPTP Sulawesi Tengah',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
 
       <Stack.Screen
         name="Menu6_upbs"
@@ -489,8 +552,93 @@ export default function Router() {
       />
 
       <Stack.Screen
+        name="Menu8_kebun"
+        component={Menu8_kebun}
+        options={{
+          headerTitle: 'Formulir Care BPTP Sulawesi Tengah',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="Menu9_pinjam"
+        component={Menu9_pinjam}
+        options={{
+          headerTitle: 'Formulir Care BPTP Sulawesi Tengah',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
+
+      <Stack.Screen
         name="Menu10_radio"
         component={Menu10_radio}
+        options={{
+          headerTitle: 'Formulir Care BPTP Sulawesi Tengah',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+
+          cardStyleInterpolator: ({ current, layouts }) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="Menu11_kerjasama"
+        component={Menu11_kerjasama}
         options={{
           headerTitle: 'Formulir Care BPTP Sulawesi Tengah',
           headerTintColor: 'white',
