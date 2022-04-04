@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,21 +7,22 @@ import {
   FlatList,
   TouchableWithoutFeedback,
   Image,
+  Linking,
 } from 'react-native';
 
-import {getData} from '../../utils/localStorage';
+import { getData, storeData } from '../../utils/localStorage';
 import axios from 'axios';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {MyButton} from '../../components';
-import {colors} from '../../utils/colors';
-import {TouchableOpacity, Swipeable} from 'react-native-gesture-handler';
-import {fonts, windowWidth} from '../../utils/fonts';
-import {useIsFocused} from '@react-navigation/native';
-import {Icon} from 'react-native-elements';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { MyButton } from '../../components';
+import { colors } from '../../utils/colors';
+import { TouchableOpacity, Swipeable } from 'react-native-gesture-handler';
+import { fonts, windowWidth } from '../../utils/fonts';
+import { useIsFocused } from '@react-navigation/native';
+import { Icon } from 'react-native-elements';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
 
-export default function Cart({navigation, route}) {
+export default function Cart({ navigation, route }) {
   const [user, setUser] = useState({});
   const [data, setData] = useState([]);
   const isFocused = useIsFocused();
@@ -31,53 +32,59 @@ export default function Cart({navigation, route}) {
 
   useEffect(() => {
     if (isFocused) {
-      console.log('called');
-      getData('user').then(res => {
-        console.log(res);
-        setUser(res);
-        __getDataBarang(res.id);
+
+      getData('token').then(res => {
+        __getDataBarang(res.token);
       });
+
+      getData('user').then(rx => {
+        console.log(rx)
+        setUser(rx);
+      });
+
     }
   }, [isFocused]);
 
-  const __getDataBarang = id_member => {
-    axios
-      .post('https://zavalabs.com/sigadisbekasi/api/cart.php', {
-        id_member: id_member,
-      })
-      .then(res => {
-        console.log('data barang,', res.data);
-        setData(res.data);
-      });
-  };
+  const __getDataBarang = (zz) => {
+    axios.post('https://carebptp.zavalabs.com/api/cart.php', {
+      token: zz
+    }).then(x => {
+      setData(x.data);
+    })
 
-  const hanldeHapus = (id, id_member) => {
-    console.log(id + id_member);
-    axios
-      .post('https://zavalabs.com/sigadisbekasi/api/cart_hapus.php', {
-        id: id,
-        id_member: id_member,
-      })
-      .then(res => {
-        console.log('delete', res);
-        __getDataBarang(id_member);
+  }
+
+  const hanldeHapus = (x) => {
+    axios.post('https://carebptp.zavalabs.com/api/cart_hapus.php', {
+      id_cart: x
+    }).then(x => {
+      getData('token').then(res => {
+        __getDataBarang(res.token);
       });
+
+      getData('cart').then(xx => {
+        storeData('cart', xx - 1)
+      })
+    })
   };
 
   var sub = 0;
-  data.map(item => {
+  data.map((item, key) => {
     sub += parseFloat(item.total);
 
     console.log(sub);
   });
 
-  const __renderItem = ({item}) => {
+  const __renderItem = ({ item, index }) => {
     return (
       <Swipeable
         renderRightActions={() => {
           return (
             <TouchableWithoutFeedback
-              onPress={() => hanldeHapus(item.id, item.id_member)}>
+              onPress={() => {
+                hanldeHapus(item.id)
+
+              }}>
               <View
                 style={{
                   // flex: 1,
@@ -105,7 +112,7 @@ export default function Cart({navigation, route}) {
             elevation: 2,
             backgroundColor: colors.white,
           }}>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <Image
               resizeMode="contain"
               style={{
@@ -113,9 +120,9 @@ export default function Cart({navigation, route}) {
                 borderRadius: 20,
                 aspectRatio: 1,
               }}
-              source={{uri: item.foto}}
+              source={{ uri: item.foto }}
             />
-            <View style={{marginLeft: 10, flex: 1, justifyContent: 'center'}}>
+            <View style={{ marginLeft: 10, flex: 1, justifyContent: 'center' }}>
               <Text
                 style={{
                   fontFamily: fonts.secondary[600],
@@ -159,7 +166,7 @@ export default function Cart({navigation, route}) {
         flex: 1,
         // padding: 10,
       }}>
-      <View style={{padding: 10, flex: 1}}>
+      <View style={{ padding: 10, flex: 1 }}>
         <FlatList data={data} renderItem={__renderItem} />
       </View>
       <View
@@ -185,28 +192,43 @@ export default function Cart({navigation, route}) {
           </Text>
         </View>
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Checkout', {
-              total: sub,
-              id_member: user.id,
-              nama_lengkap: user.nama_lengkap,
-              nohp: user.tlp,
-              email: user.email,
-              alamat: user.alamat,
-            })
-          }
+          onPress={() => {
+
+            getData('token').then(res => {
+
+
+              axios.post('https://carebptp.zavalabs.com/api/wa.php', {
+                token: res.token,
+                nama: user.nama_lengkap,
+                profesi: user.profesi
+              }).then(rr => {
+                console.log(rr.data)
+
+                Linking.openURL('https://api.whatsapp.com/send?phone=6281319456595&text=' + rr.data);
+              })
+
+
+            });
+
+
+
+          }}
           style={{
-            flex: 1,
+
             backgroundColor: colors.primary,
-            padding: 30,
+            padding: 15,
             justifyContent: 'center',
             alignItems: 'center',
+            flexDirection: 'row'
           }}>
+          <Icon type='ionicon' name="logo-whatsapp" color={colors.white} size={windowWidth / 20} />
           <Text
             style={{
-              fontSize: windowWidth / 18,
+              fontSize: windowWidth / 20,
+              left: 5,
               fontFamily: fonts.secondary[600],
-              color: 'white',
+              color: colors.white,
+
             }}>
             CHECKOUT
           </Text>

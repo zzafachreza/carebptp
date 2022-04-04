@@ -200,7 +200,7 @@ export default function ({ navigation }) {
                     fontFamily: fonts.secondary[600],
                     fontSize: windowWidth / 17,
                     marginVertical: 10,
-                }}>Unit Pengelola Benih Sumber</Text>
+                }}>Layanan Radio</Text>
 
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama' iconname='create-outline' />
                 <MyInput value={data.instansi} onChangeText={x => setData({ ...data, instansi: x, })} label='Nama Instansi' iconname='create-outline' />

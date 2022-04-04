@@ -1,152 +1,376 @@
-import React, {useEffect, useState} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  ScrollView,
-  FlatList,
   SafeAreaView,
-  RefreshControl,
   Image,
+  ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import {storeData, getData} from '../../utils/localStorage';
+import { colors } from '../../utils/colors';
+import { fonts, windowWidth } from '../../utils/fonts';
+import { MyButton, MyGap } from '../../components';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
+import { Icon } from 'react-native-elements/dist/icons/Icon';
+import { Modalize } from 'react-native-modalize';
+import { showMessage } from 'react-native-flash-message';
+import { getData, storeData } from '../../utils/localStorage';
 import axios from 'axios';
-import {colors} from '../../utils/colors';
-import {windowWidth, fonts} from '../../utils/fonts';
+import { useIsFocused } from '@react-navigation/native';
+import { sha1 } from 'react-native-sha1';
 
-const wait = timeout => {
-  return new Promise(resolve => {
-    setTimeout(resolve, timeout);
+export default function Barang({ navigation, route }) {
+  const item = route.params;
+  navigation.setOptions({
+    headerShown: false,
   });
-};
-export default function ({navigation, route}) {
-  const [refreshing, setRefreshing] = React.useState(false);
+
+  const isFocused = useIsFocused();
+
+  const [jumlah, setJumlah] = useState(1);
+  const [user, setUser] = useState({});
+  const [cart, setCart] = useState(0);
+  const [token, setToken] = useState('');
+
   const [data, setData] = useState([]);
 
-  const onRefresh = React.useCallback(() => {
-    setRefreshing(true);
-    getDataBarang();
-    wait(2000).then(() => setRefreshing(false));
-  }, []);
-
   useEffect(() => {
-    getDataBarang();
-  }, []);
+    if (isFocused) {
+      getData('user').then(res => {
+        console.log('data user', res);
+        setUser(res);
+      });
 
-  const getDataBarang = () => {
-    axios.get('https://zavalabs.com/ekpp/api/barang.php').then(res => {
-      setData(res.data);
-    });
+      getData('token').then(res => {
+        setToken(res.token);
+
+      });
+      getData('cart').then(re => {
+        setCart(re);
+      })
+
+    }
+  }, [isFocused]);
+
+  const modalizeRef = useRef();
+
+  const onOpen = () => {
+    modalizeRef.current?.open();
   };
 
-  const renderItem = ({item}) => (
-    <TouchableOpacity
-      onPress={() => {
-        if (item.stok > 0) {
-          navigation.navigate('Pinjam', item);
-        } else {
-          alert('Maaf tidak bisa pinjam !');
-        }
-      }}
-      style={{
-        padding: 10,
-        margin: 10,
-        backgroundColor: 'white',
-        elevation: 1,
 
-        // height: 80,
-        flexDirection: 'row',
-      }}>
-      <View
-        style={{
-          flex: 2,
-          justifyContent: 'center',
-        }}>
-        {item.stok > 0 && (
-          <Text
-            style={{
-              fontSize: windowWidth / 35,
-              color: colors.black,
-              fontFamily: fonts.secondary[400],
-            }}>
-            KLIK UNTUK PINJAM ALAT & BAHAN
-          </Text>
-        )}
-        <Image
-          source={{uri: item.foto}}
-          style={{width: 100, height: 100, resizeMode: 'contain'}}
-        />
-        <Text
-          style={{
-            fontSize: windowWidth / 30,
-            color: colors.primary,
-            fontFamily: fonts.secondary[600],
-          }}>
-          {item.nama_barang}
-        </Text>
-      </View>
-      <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
 
-          flex: 1,
-        }}>
-        {item.stok > 0 && (
-          <>
-            <Text
-              style={{
-                fontSize: 20,
-                fontFamily: 'Montserrat-Medium',
-                color: colors.black,
-              }}>
-              {item.stok}
-            </Text>
-            <Text
-              style={{
-                fontSize: 10,
-                textAlign: 'center',
-                color: colors.secondary,
-              }}>
-              Stock Available
-            </Text>
-          </>
-        )}
-        {item.stok == 0 && (
-          <>
-            <Text
-              style={{
-                fontSize: 10,
-                textAlign: 'center',
-                color: colors.primary,
-              }}>
-              Out of Stock
-            </Text>
-          </>
-        )}
-      </View>
-    </TouchableOpacity>
-  );
+  const addToCart = () => {
+
+
+    const kirim = {
+      fid_barang: item.id,
+      qty: jumlah,
+      harga: item.harga_barang,
+      total: jumlah * item.harga_barang,
+      token: token
+    };
+
+
+
+
+    console.log('send to server', kirim);
+
+    setCart(cart + 1);
+    storeData('cart', cart + 1);
+
+    axios.post('https://carebptp.zavalabs.com/api/1add_cart.php', kirim).then(x => {
+      console.log('response : ', x)
+    })
+
+
+
+
+
+
+
+
+
+
+
+    modalizeRef.current.close();
+
+
+
+
+
+
+
+
+  };
 
   return (
-    <ScrollView
-      refreshControl={
-        <RefreshControl
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-          colors={[colors.primary]}
-        />
-      }
+    <SafeAreaView
       style={{
-        padding: 10,
+        flex: 1,
+        backgroundColor: colors.white,
       }}>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
+      <View
+        style={{
+          height: 50,
+          // padding: 10,
+          paddingRight: 10,
+          backgroundColor: colors.primary,
+
+          flexDirection: 'row',
+        }}>
+        <View style={{ justifyContent: 'center' }}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={{
+              padding: 10,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Icon type="ionicon" name="arrow-back" color={colors.white} />
+          </TouchableOpacity>
+        </View>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text
+            style={{
+              fontFamily: fonts.secondary[600],
+              fontSize: windowWidth / 20,
+              color: colors.white,
+            }}>
+            {item.nama_barang}
+          </Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => {
+
+
+
+            // storeData('myCart', [])
+            navigation.navigate('Cart')
+          }}
+          style={{
+            padding: 10,
+            position: 'relative',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Icon type="ionicon" name="cart-outline" color={colors.white} />
+
+          <View
+            style={{
+              width: 20,
+              height: 20,
+              borderRadius: 10,
+              backgroundColor: colors.white,
+              position: 'absolute',
+              right: 0,
+              top: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                fontFamily: fonts.secondary[600],
+                color: colors.primary,
+                fontSize: windowWidth / 35,
+              }}>
+              {cart}
+            </Text>
+          </View>
+
+        </TouchableOpacity>
+      </View>
+      <View
+        style={{
+          flex: 1,
+        }}>
+        <Image
+          resizeMode="contain"
+          style={{
+            width: '100%',
+            aspectRatio: 1.5,
+          }}
+          source={{
+            uri: item.foto,
+          }}
+        />
+
+        <View
+          style={{
+            backgroundColor: colors.white,
+            flex: 1,
+          }}>
+          <View
+            style={{
+              padding: 10,
+            }}>
+            <Text
+              style={{
+                fontFamily: fonts.secondary[600],
+                fontSize: windowWidth / 25,
+                color: colors.primary,
+              }}>
+              {item.nama_barang}
+            </Text>
+            <Text
+              style={{
+                marginVertical: 5,
+                fontFamily: fonts.secondary[600],
+                fontSize: windowWidth / 20,
+                color: colors.secondary,
+              }}>
+              Rp. {new Intl.NumberFormat().format(item.harga_barang)} / {item.uom_barang}
+            </Text>
+
+          </View>
+          <View style={{ padding: 10 }}>
+            <Text
+              style={{
+                fontFamily: fonts.secondary[400],
+                fontSize: windowWidth / 20,
+                color: colors.secondary,
+              }}>
+              {item.jenis_barang}
+            </Text>
+          </View>
+        </View>
+      </View>
+
+      <MyButton
+        fontWeight="bold"
+        radius={0}
+        title="TAMBAH KERANJANG"
+        warna={colors.primary}
+        onPress={onOpen}
       />
-    </ScrollView>
+
+
+
+      <Modalize
+        withHandle={false}
+        scrollViewProps={{ showsVerticalScrollIndicator: false }}
+        snapPoint={275}
+        HeaderComponent={
+          <View style={{ padding: 10 }}>
+            <View style={{ flexDirection: 'row' }}>
+              <View>
+                <Image
+                  resizeMode="contain"
+                  style={{
+                    width: 100,
+                    borderRadius: 20,
+                    aspectRatio: 1,
+                  }}
+                  source={{ uri: item.foto }}
+                />
+              </View>
+              <View style={{ flex: 1, padding: 10, justifyContent: 'center' }}>
+                <Text
+                  style={{
+                    fontFamily: fonts.secondary[600],
+                    fontSize: 20,
+                    color: colors.primary,
+                  }}>
+                  Rp. {new Intl.NumberFormat().format(item.harga_barang * jumlah)}
+                </Text>
+              </View>
+              <TouchableOpacity onPress={() => modalizeRef.current.close()}>
+                <Icon type="ionicon" name="close-outline" size={35} />
+              </TouchableOpacity>
+            </View>
+          </View>
+        }
+        withHandle={false}
+        ref={modalizeRef}>
+        <View style={{ flex: 1, height: windowWidth / 2 }}>
+          <View style={{ padding: 10, flex: 1 }}>
+            <View style={{ flexDirection: 'row', marginTop: 20 }}>
+              <View style={{ flex: 1 }}>
+                <Text
+                  style={{
+                    fontFamily: fonts.secondary[600],
+                    color: colors.black,
+                  }}>
+                  Jumlah
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+
+                  justifyContent: 'space-around',
+                }}>
+                <TouchableOpacity
+                  onPress={() => {
+                    setJumlah(jumlah - 1);
+                  }}
+                  style={{
+                    backgroundColor: colors.primary,
+                    width: '30%',
+                    borderRadius: 10,
+                    height: 40,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginRight: 10,
+                  }}>
+                  <Icon type="ionicon" name="remove" color={colors.white} />
+                </TouchableOpacity>
+                <View
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Text
+                    style={{ fontSize: 16, fontFamily: fonts.secondary[600] }}>
+                    {jumlah}
+                  </Text>
+                </View>
+                <TouchableOpacity
+                  onPress={() => {
+
+                    setJumlah(jumlah + 1);
+                  }}
+                  style={{
+                    backgroundColor: colors.primary,
+                    width: '30%',
+                    borderRadius: 10,
+                    marginLeft: 10,
+                    height: 40,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Icon type="ionicon" name="add" color={colors.white} />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+
+            <View style={{ marginTop: 15 }}>
+              <TouchableOpacity
+                onPress={addToCart}
+                style={{
+                  backgroundColor: colors.primary,
+                  borderRadius: 10,
+                  padding: 15,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Text
+                  style={{
+                    fontFamily: fonts.secondary[600],
+                    fontSize: windowWidth / 22,
+                    color: colors.white,
+                  }}>
+                  TAMBAH KERANJANG
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modalize>
+    </SafeAreaView>
   );
 }
 
