@@ -122,7 +122,7 @@ export default function Home({ navigation }) {
 
   return (
     <ImageBackground
-      // source={require('../../assets/back.jpeg')}
+      // source={require('../../assets/back.png')}
       style={{
         flex: 1,
         backgroundColor: colors.white,
@@ -227,7 +227,7 @@ export default function Home({ navigation }) {
             onPress={() => navigation.navigate('Menu2_lab')}
             icon="flask-outline"
             nama="Layanan"
-            nama2="Laboratorium (Uji Tanah)"
+            nama2="Uji Tanah dan Pupuk"
           />
         </View>
 
@@ -289,15 +289,15 @@ export default function Home({ navigation }) {
             warna={colors.primary}
             onPress={() => navigation.navigate('Menu7_alat')}
             icon="cube-outline"
-            nama="Layanan Alat"
-            nama2="dan Mesin Pertanian"
+            nama="Layanan Peminjaman"
+            nama2="Alat Mesin Pertanian"
           />
           <DataKategori
             warna={colors.primary}
             onPress={() => navigation.navigate('Menu8_kebun')}
             icon="flower-outline"
             nama="Layanan"
-            nama2="Kebun Percobaan"
+            nama2="IP2TP"
           />
         </View>
 
@@ -309,13 +309,13 @@ export default function Home({ navigation }) {
           }}>
 
 
-          <DataKategori
+          {/* <DataKategori
             warna={colors.primary}
             onPress={() => navigation.navigate('Menu9_pinjam')}
             icon="color-fill-outline"
             nama="Layanan Peminjaman"
             nama2="Alat Mesin Pertanian"
-          />
+          /> */}
           <DataKategori
             warna={colors.primary}
             onPress={() => navigation.navigate('Menu10_radio')}
@@ -323,15 +323,6 @@ export default function Home({ navigation }) {
             nama="Layanan"
             nama2="Radio"
           />
-        </View>
-        <View
-          style={{
-            paddingHorizontal: 10,
-            flexDirection: 'row',
-            marginTop: 5,
-          }}>
-
-
           <DataKategori
             warna={colors.primary}
             onPress={() => navigation.navigate('Menu11_kerjasama')}
@@ -339,8 +330,8 @@ export default function Home({ navigation }) {
             nama="Layanan"
             nama2="Kerjasama Penelitian"
           />
-
         </View>
+
 
         {/*  */}
 

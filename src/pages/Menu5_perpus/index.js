@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import { MyPicker, MyGap, MyInput, MyButton } from '../../components';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
@@ -11,6 +11,7 @@ import axios from 'axios';
 import LottieView from 'lottie-react-native';
 import { showMessage } from 'react-native-flash-message';
 import MyCarouser from '../../components/MyCarouser';
+import { Icon } from 'react-native-elements';
 export default function ({ navigation }) {
     const [data, setData] = useState({
         nama: '',
@@ -154,7 +155,7 @@ export default function ({ navigation }) {
         if (data.nama.length === 0) { showMessage({ message: 'Maaf nama masih kosong !' }); }
         else if (data.email.length === 0) { showMessage({ message: 'Maaf email masih kosong !' }); }
         else if (data.telepon.length === 0) { showMessage({ message: 'Maaf telepon masih kosong !' }); }
-        else if (data.jenis_layanan.length === 0) { showMessage({ message: 'Maaf jenis_layanan masih kosong !' }); }
+        else if (data.jenis_layanan.length === 0) { showMessage({ message: 'Maaf layanan yang dibutuhkan masih kosong !' }); }
         else {
             setLoading(true);
             console.log('kirim ke server : ', data)
@@ -191,10 +192,27 @@ export default function ({ navigation }) {
                     marginVertical: 10,
                 }}>Layanan Perpustakaan</Text>
 
+                <TouchableOpacity onPress={() => Linking.openURL('https://kikp.pertanian.go.id/')} style={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-end',
+                    alignItems: 'center',
+
+                }}><Text style={{
+                    fontFamily: fonts.secondary[600],
+                    fontSize: windowWidth / 25,
+                    marginVertical: 5,
+                    right: 5,
+                    color: colors.secondary,
+                    textAlign: 'center',
+                    borderBottomWidth: 1,
+                    borderBottomColor: colors.primary
+                }}>Link Pustaka Kementan</Text>
+                    <Icon type='ionicon' name='open-outline' color={colors.secondary} size={windowWidth / 22} />
+                </TouchableOpacity>
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama' iconname='create-outline' />
                 <MyInput value={data.email} onChangeText={x => setData({ ...data, email: x, })} label='Email' iconname='create-outline' />
-                <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='Telepon' iconname='create-outline' />
-                <MyPicker
+                <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='No Whatsapp' iconname='create-outline' />
+                {/* <MyPicker
                     onValueChange={x => {
 
 
@@ -238,7 +256,9 @@ export default function ({ navigation }) {
                         },
                     ]}
                 />
-                {buka1 && <MyInput value={data.jenis_layanan} onChangeText={x => setData({ ...data, jenis_layanan: x, })} label='Lainnya : ' iconname='create-outline' />}
+                {buka1 && <MyInput value={data.jenis_layanan} onChangeText={x => setData({ ...data, jenis_layanan: x, })} label='Lainnya : ' iconname='create-outline' />} */}
+
+                <MyInput value={data.jenis_layanan} onChangeText={x => setData({ ...data, jenis_layanan: x, })} label='Layanan yang dibutuhkan' multiline iconname='create-outline' />
 
 
 
@@ -250,7 +270,7 @@ export default function ({ navigation }) {
                 <UploadFoto
                     onPress1={() => getCamera(1)}
                     onPress2={() => getGallery(1)}
-                    label="Upload Foto Dokumen"
+                    label="Upload Identitas / Dokumen"
                     foto={foto}
                 />
 

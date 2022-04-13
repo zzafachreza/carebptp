@@ -15,6 +15,7 @@ export default function ({ navigation }) {
     const [data, setData] = useState({
         email: '',
         nama: '',
+        whatsapp: '',
         instansi: '',
         alamat: '',
         info_dibutuhkan: '',
@@ -164,10 +165,11 @@ export default function ({ navigation }) {
             });
         } else if (data.instansi.length === 0) { showMessage({ message: 'Maaf instansi masih kosong !' }); }
         else if (data.alamat.length === 0) { showMessage({ message: 'Maaf alamat masih kosong !' }); }
-        else if (data.info_dibutuhkan.length === 0) { showMessage({ message: 'Maaf info_dibutuhkan masih kosong !' }); }
-        else if (data.pengguna_informasi.length === 0) { showMessage({ message: 'Maaf pengguna_informasi masih kosong !' }); }
-        else if (data.jenis_dokumen.length === 0) { showMessage({ message: 'Maaf jenis_dokumen masih kosong !' }); }
-        else if (data.hal_konsultasi.length === 0) { showMessage({ message: 'Maaf hal_konsultasi masih kosong !' }); }
+        else if (data.info_dibutuhkan.length === 0) { showMessage({ message: 'Maaf info dibutuhkan masih kosong !' }); }
+        else if (data.whatsapp.length === 0) { showMessage({ message: 'Maaf whatsapp masih kosong !' }); }
+        else if (data.pengguna_informasi.length === 0) { showMessage({ message: 'Maaf pengguna informasi masih kosong !' }); }
+        else if (data.jenis_dokumen.length === 0) { showMessage({ message: 'Maaf jenis dokumen masih kosong !' }); }
+        else if (data.hal_konsultasi.length === 0) { showMessage({ message: 'Maaf hal konsultasi masih kosong !' }); }
         else if (data.foto.length === 0) { showMessage({ message: 'Maaf foto masih kosong !' }); }
         else {
             setLoading(true)
@@ -204,6 +206,7 @@ export default function ({ navigation }) {
 
                 <MyInput value={data.email} onChangeText={x => setData({ ...data, email: x, })} label='Email' iconname='create-outline' />
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama' iconname='create-outline' />
+                <MyInput value={data.whatsapp} keyboardType='number-pad' onChangeText={x => setData({ ...data, whatsapp: x, })} label='No Whatsapp' iconname='create-outline' />
                 <MyInput value={data.instansi} onChangeText={x => setData({ ...data, instansi: x, })} label='Instansi' iconname='create-outline' />
                 <MyInput value={data.alamat} onChangeText={x => setData({ ...data, alamat: x, })} label='Alamat' iconname='create-outline' />
 
@@ -361,7 +364,7 @@ export default function ({ navigation }) {
                 <UploadFoto
                     onPress1={() => getCamera(1)}
                     onPress2={() => getGallery(1)}
-                    label="Upload Surat Permohonan"
+                    label="Upload Identitas / Dokumen"
                     foto={foto}
                 />
 

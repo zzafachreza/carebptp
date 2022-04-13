@@ -119,7 +119,7 @@ export default function Login({ navigation }) {
               // maxWidth: 230,
               // textAlign: 'center',
             }}>
-            Silahkan Masukan Nama dan Jabatan untuk masuk ke aplikasi
+            Silahkan Masukan Nama dan Profesi untuk masuk ke aplikasi
           </Text>
 
           <MyGap jarak={20} />

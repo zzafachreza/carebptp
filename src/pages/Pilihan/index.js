@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,16 +10,16 @@ import {
   ImageBackground,
   SafeAreaView,
 } from 'react-native';
-import {colors} from '../../utils/colors';
-import {fonts, windowHeight, windowWidth} from '../../utils/fonts';
-import {MyInput, MyGap, MyButton} from '../../components';
+import { colors } from '../../utils/colors';
+import { fonts, windowHeight, windowWidth } from '../../utils/fonts';
+import { MyInput, MyGap, MyButton } from '../../components';
 import LottieView from 'lottie-react-native';
 import axios from 'axios';
-import {storeData, getData} from '../../utils/localStorage';
-import {showMessage} from 'react-native-flash-message';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { storeData, getData } from '../../utils/localStorage';
+import { showMessage } from 'react-native-flash-message';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function Pilihan({navigation, route}) {
+export default function Pilihan({ navigation, route }) {
   const handleTipe = x => {
     alert('Anda Meilih ' + x);
     storeData('tipe', x);
@@ -27,8 +27,8 @@ export default function Pilihan({navigation, route}) {
   };
   return (
     <ImageBackground
-      source={require('../../assets/back.jpeg')}
-      style={{flex: 1, padding: 10, justifyContent: 'space-around'}}>
+      source={require('../../assets/back.png')}
+      style={{ flex: 1, padding: 10, justifyContent: 'space-around' }}>
       <TouchableOpacity
         onPress={() => handleTipe('DINAS LUAR')}
         style={{

@@ -76,20 +76,22 @@ export default function Visimisi({ navigation }) {
                         height: 100,
                     }} />
                 </View>
-                <View>
+                <View style={{
+                    padding: 10,
+                }}>
 
                     <Text style={{
                         marginTop: 10,
                         fontFamily: fonts.primary[600],
-                        fontSize: windowWidth / 17,
+                        fontSize: windowWidth / 20,
                         color: colors.black
-                    }}>Visi</Text>
+                    }}>Pengertian</Text>
                     <Text style={{
                         fontFamily: fonts.primary[400],
-                        fontSize: windowWidth / 22,
-                        textAlign: 'left',
+                        fontSize: windowWidth / 25,
+                        textAlign: 'justify',
                         color: colors.black
-                    }}>Terwujudnya Kedaulatan Pangan dan Kesejahteraan Petani
+                    }}>CARE   (Collaboration Attitude Responsibility Existence) BPTP Sulawesi Tengah merupakan sistem  aplikasi pelayanan publik BPTP   Sulawesi   Tengah    berbasis online untuk  memberikan   pelayanan  dengan  cara  cepat,  tepat,  akurat, serta  mudah. Layanan publik ini terdiri dari delapan jenis layanan
                     </Text>
 
 

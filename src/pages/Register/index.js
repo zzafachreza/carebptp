@@ -112,7 +112,7 @@ export default function Register({ navigation }) {
   };
   return (
     <ImageBackground
-      source={require('../../assets/back.jpeg')}
+      source={require('../../assets/back.png')}
       style={{
         flex: 1,
         backgroundColor: isEnabled ? colors.black : colors.white,

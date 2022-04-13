@@ -11,7 +11,20 @@ import axios from 'axios';
 import LottieView from 'lottie-react-native';
 import { showMessage } from 'react-native-flash-message';
 import MyCarouser from '../../components/MyCarouser';
+import DocumentPicker, {
+    DirectoryPickerResponse,
+    DocumentPickerResponse,
+    isInProgress,
+    types,
+} from 'react-native-document-picker'
 export default function ({ navigation }) {
+
+
+
+
+
+
+
     const [data, setData] = useState({
         nama: '',
         instansi: '',
@@ -150,38 +163,74 @@ export default function ({ navigation }) {
         );
     };
 
+    const [path, setPath] = useState('');
 
     //   kirim ke server
 
-    const kirim = () => {
+    const kirim = async () => {
         // setLoading(true);
-        console.log('kirim to server', data);
+        // console.log('kirim to server', data);
         if (data.nama.length === 0) { showMessage({ message: 'Maaf nama masih kosong !' }); }
         else if (data.instansi.length === 0) { showMessage({ message: 'Maaf instansi masih kosong !' }); }
         else if (data.jenis_instansi.length === 0) { showMessage({ message: 'Maaf jenis_instansi masih kosong !' }); }
         else if (data.alamat.length === 0) { showMessage({ message: 'Maaf alamat masih kosong !' }); }
         else if (data.email.length === 0) { showMessage({ message: 'Maaf email masih kosong !' }); }
         else if (data.jenis_layanan.length === 0) { showMessage({ message: 'Maaf jenis_layanan masih kosong !' }); }
-        else if (data.jenis_iklan.length === 0) { showMessage({ message: 'Maaf jenis_iklan masih kosong !' }); }
-        else if (data.iklan_konmersial.length === 0) { showMessage({ message: 'Maaf iklan_konmersial masih kosong !' }); }
-        else if (data.iklan_nonkomersial.length === 0) { showMessage({ message: 'Maaf iklan_nonkomersial masih kosong !' }); }
-        else if (data.tarif_layanan.length === 0) { showMessage({ message: 'Maaf tarif_layanan masih kosong !' }); }
+        // else if (data.jenis_iklan.length === 0) { showMessage({ message: 'Maaf jenis_iklan masih kosong !' }); }
+        // else if (data.iklan_konmersial.length === 0) { showMessage({ message: 'Maaf iklan_konmersial masih kosong !' }); }
+        // else if (data.iklan_nonkomersial.length === 0) { showMessage({ message: 'Maaf iklan_nonkomersial masih kosong !' }); }
+        // else if (data.tarif_layanan.length === 0) { showMessage({ message: 'Maaf tarif_layanan masih kosong !' }); }
         else {
-            setLoading(true);
-            console.log('kirim ke server : ', data)
-            axios
-                .post('https://carebptp.zavalabs.com/api/1add_radio.php', data)
-                .then(x => {
-                    console.log('response server : ', x.data)
+            // setLoading(true);
+            // console.log('kirim ke server : ', data);
 
-                    setLoading(false);
-                    showMessage({
-                        type: 'success',
-                        message: 'Data Kamu Berhasil Di Kirim'
-                    })
+            const formData = new FormData();
+            formData.append('nama', data.nama);
+            formData.append('instansi', data.instansi);
+            formData.append('jenis_instansi', data.jenis_instansi);
+            formData.append('alamat', data.alamat);
+            formData.append('email', data.email);
+            formData.append('jenis_layanan', data.jenis_layanan);
+            formData.append('nama_pdf', path.name);
+            formData.append('file_attachment', path);
 
-                    navigation.navigate('MainApp');
-                });
+            // console.log(formData);
+
+            let zavalabs = await fetch(
+                'https://carebptp.zavalabs.com/api/1add_radio.php',
+                {
+                    method: 'post',
+                    body: formData,
+                    headers: {
+                        'Content-Type': 'multipart/form-data; ',
+                    },
+                }
+            );
+
+            // let responseJson = await zavalabs.json();
+            console.error(zavalabs);
+
+            showMessage({
+                type: 'success',
+                message: 'Data Kamu Berhasil Di Kirim'
+            })
+
+            navigation.navigate('MainApp');
+
+            // axios
+            //     .post('https://carebptp.zavalabs.com/api/1add_radio.php', { data: formData }, {
+            //         headers: {
+            //             'Content-Type': 'multipart/form-data'
+            //         }
+            //     })
+            //     .then(x => {
+            //         console.log('response server : ', x.data)
+
+            //         // setLoading(false);
+
+            //     });
+
+
         }
 
 
@@ -256,7 +305,7 @@ export default function ({ navigation }) {
                 <MyInput value={data.alamat} onChangeText={x => setData({ ...data, alamat: x, })} label='alamat' iconname='create-outline' />
                 <MyInput value={data.email} onChangeText={x => setData({ ...data, email: x, })} label='email' iconname='create-outline' />
 
-                <MyPicker
+                {/* <MyPicker
                     onValueChange={x => {
 
 
@@ -384,10 +433,10 @@ export default function ({ navigation }) {
 
                 <MyInput value={data.iklan_nonkomersial} onChangeText={x => setData({ ...data, iklan_nonkomersial: x, })} label='Iklan Non Komersial' iconname='create-outline' />
                 <MyInput value={data.tarif_layanan} onChangeText={x => setData({ ...data, tarif_layanan: x, })} label='Tarif Jasa Layanan Iklan Tahun 2015 sesuai dengan PP No 5' iconname='create-outline' />
+ */}
 
 
-
-
+                <MyInput value={data.jenis_layanan} multiline onChangeText={x => setData({ ...data, jenis_layanan: x, })} label='Layanan Publikasi dan Desiminasi' iconname='create-outline' />
 
 
 
@@ -397,12 +446,49 @@ export default function ({ navigation }) {
 
                 <MyGap jarak={5} />
 
-                <UploadFoto
+                <MyButton
+                    warna={colors.danger}
+                    title="Upload Dokumen PDF"
+                    onPress={async () => {
+
+                        try {
+                            const res = await DocumentPicker.pick({
+                                // Provide which type of file you want user to pick
+                                type: [DocumentPicker.types.pdf],
+                                // There can me more options as well
+                                // DocumentPicker.types.allFiles
+                                // DocumentPicker.types.images
+                                // DocumentPicker.types.plainText
+                                // DocumentPicker.types.audio
+                                // DocumentPicker.types.pdf
+                            });
+                            // Printing the log realted to the file
+                            console.log('res : ' + JSON.stringify(res));
+                            // Setting the state to show single file attributes
+                            setPath(res[0]);
+                        } catch (err) {
+                            setSingleFile(null);
+                            // Handling any exception (If any)
+                            if (DocumentPicker.isCancel(err)) {
+                                // If user canceled the document selection
+                                alert('Canceled');
+                            } else {
+                                // For Unknown Error
+                                alert('Unknown Error: ' + JSON.stringify(err));
+                                throw err;
+                            }
+                        }
+
+                    }}
+                />
+                <Text>{path.name}</Text>
+
+                {/* <UploadFoto
                     onPress1={() => getCamera(1)}
                     onPress2={() => getGallery(1)}
                     label="Upload Foto Dokumen"
                     foto={foto}
-                />
+                /> */}
 
 
                 <MyGap jarak={20} />

@@ -200,52 +200,11 @@ export default function ({ navigation }) {
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama' iconname='create-outline' />
                 <MyInput value={data.sekolah} onChangeText={x => setData({ ...data, sekolah: x, })} label='Asal Instansi / Sekolah' iconname='create-outline' />
                 <MyInput value={data.alamat_sekolah} onChangeText={x => setData({ ...data, alamat_sekolah: x, })} label='Alamat Sekolah' iconname='create-outline' />
-                <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='Telepon' iconname='create-outline' />
+                <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='No Whatsapp' iconname='create-outline' />
                 <MyInput value={data.email} onChangeText={x => setData({ ...data, email: x, })} label='Email' iconname='create-outline' />
                 <MyInput value={data.waktu_pelaksanaan} onChangeText={x => setData({ ...data, waktu_pelaksanaan: x, })} label='Waktu Pelaksanaan' iconname='create-outline' />
 
-                <MyPicker
-                    onValueChange={x => {
-
-
-                        if (x == 'Lainnya') {
-                            setBuka1(true);
-                            setData({
-                                ...data,
-                                materi: '',
-                            })
-                        } else {
-                            setBuka1(false);
-                            setData({
-                                ...data,
-                                materi: x,
-                            })
-                        }
-                    }
-                    }
-                    iconname="list"
-                    label="Materi"
-                    data={[
-                        {
-                            label: 'Budidaya',
-                            value: 'Budidaya',
-                        },
-                        {
-                            label: 'Pasca Panen',
-                            value: 'Pasca Panen',
-                        },
-                        {
-                            label: 'Peternakan',
-                            value: 'Peternakan',
-                        },
-
-                        {
-                            label: 'Lainnya',
-                            value: 'Lainnya',
-                        },
-                    ]}
-                />
-                {buka1 && <MyInput value={data.materi} onChangeText={x => setData({ ...data, materi: x, })} label='Lainnya : ' iconname='create-outline' />}
+                <MyInput value={data.materi} onChangeText={x => setData({ ...data, materi: x, })} label='Materi yang dibutuhkan' iconname='create-outline' />
 
 
 
@@ -257,7 +216,7 @@ export default function ({ navigation }) {
                 <UploadFoto
                     onPress1={() => getCamera(1)}
                     onPress2={() => getGallery(1)}
-                    label="Upload Foto Dokumen"
+                    label="Upload Identitas / Dokumen"
                     foto={foto}
                 />
 

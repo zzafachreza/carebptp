@@ -43,13 +43,19 @@ export default function Barang({ navigation, route }) {
         setUser(res);
       });
 
-      getData('token').then(res => {
-        setToken(res.token);
+      getData('token').then(tkn => {
+        setToken(tkn.token);
+        axios
+          .post('https://carebptp.zavalabs.com/api/1_cart.php', {
+            token: tkn.token
+          })
+          .then(res => {
+            console.log('car', res.data);
+            setCart(res.data);
+          });
 
       });
-      getData('cart').then(re => {
-        setCart(re);
-      })
+
 
     }
   }, [isFocused]);

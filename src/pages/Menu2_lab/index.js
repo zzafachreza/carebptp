@@ -17,7 +17,7 @@ export default function ({ navigation }) {
         email: '',
         telepon: '',
         jenis_layanan: '',
-
+        instansi: '',
         foto: '',
 
     });
@@ -153,6 +153,7 @@ export default function ({ navigation }) {
 
         if (data.nama.length === 0) { showMessage({ message: 'Maaf nama masih kosong !' }); }
         else if (data.email.length === 0) { showMessage({ message: 'Maaf email masih kosong !' }); }
+        else if (data.instansi.length === 0) { showMessage({ message: 'Maaf instansi masih kosong !' }); }
         else if (data.telepon.length === 0) { showMessage({ message: 'Maaf telepon masih kosong !' }); }
         else if (data.jenis_layanan.length === 0) { showMessage({ message: 'Maaf jenis_layanan masih kosong !' }); }
         else {
@@ -189,11 +190,12 @@ export default function ({ navigation }) {
                     fontFamily: fonts.secondary[600],
                     fontSize: windowWidth / 17,
                     marginVertical: 10,
-                }}>Layanan Laboratorium (Uji Tanah)</Text>
+                }}>Layanan Uji Tanah dan Pupuk</Text>
 
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama' iconname='create-outline' />
+                <MyInput value={data.instansi} onChangeText={x => setData({ ...data, instansi: x, })} label='Instansi' iconname='create-outline' />
                 <MyInput value={data.email} onChangeText={x => setData({ ...data, email: x, })} label='Email' iconname='create-outline' />
-                <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='Telepon' iconname='create-outline' />
+                <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='No Whatsapp' iconname='create-outline' />
                 <MyPicker
                     onValueChange={x => {
 
@@ -268,7 +270,7 @@ export default function ({ navigation }) {
                 <UploadFoto
                     onPress1={() => getCamera(1)}
                     onPress2={() => getGallery(1)}
-                    label="Upload Foto Dokumen"
+                    label="Upload Identitas / Dokumen"
                     foto={foto}
                 />
 

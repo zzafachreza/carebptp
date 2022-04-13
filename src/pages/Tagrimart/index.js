@@ -31,11 +31,24 @@ export default function Tagrimart({ navigation, route }) {
                 setData(res.data);
             });
 
-        getData('cart').then(re => {
-            setCart(re);
-        })
+        getData('token').then(tkn => {
+            axios
+                .post('https://carebptp.zavalabs.com/api/1_cart.php', {
+                    token: tkn.token
+                })
+                .then(res => {
+                    console.log('car', res.data);
+                    setCart(res.data);
+                });
+
+        });
+
+
+
 
     };
+
+
 
     useEffect(() => {
         if (isFocused) {
@@ -117,7 +130,7 @@ export default function Tagrimart({ navigation, route }) {
                         fontFamily: fonts.secondary[400],
                         color: colors.white,
                         fontSize: windowWidth / 25
-                    }}>Tagimart - Silahkan pilih produk dan lakukan checkout</Text>
+                    }}>Tagrimart - Silahkan pilih produk dan lakukan checkout</Text>
                 </View>
 
                 <TouchableOpacity

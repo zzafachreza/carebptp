@@ -29,7 +29,8 @@ export default function ({ navigation }) {
         duration: 2000,
     }).start(val => {
         if (val.finished) {
-            navigation.navigate('Visimisi5')
+            // navigation.navigate('Visimisi5')
+            navigation.replace('MainApp')
         }
     });
 
@@ -76,65 +77,103 @@ export default function ({ navigation }) {
                         height: 100,
                     }} />
                 </View>
-                <View>
+                <View style={{
+                    padding: 10,
+                }}>
                     {/*  */}
                     <Text style={{
                         marginTop: 10,
                         fontFamily: fonts.primary[600],
-                        fontSize: windowWidth / 17,
+                        fontSize: windowWidth / 20,
                         color: colors.black
                     }}>Fungsi</Text>
                     <View style={{
                         flexDirection: 'row'
                     }}>
-                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} />
+                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 25} />
                         <Text style={{
                             fontFamily: fonts.primary[400],
-                            fontSize: windowWidth / 22,
+                            fontSize: windowWidth / 25,
                             left: 5,
+                            flex: 1,
                             textAlign: 'justify',
                             color: colors.black
-                        }}>Pelaksanaan penyusunan program, rencana kerja, anggaran, evaluasi, dan laporan pengkajian, perakitan, pengembangan dan diseminasi teknologi pertanian tepat guna spesifik lokasi
+                        }}>Pelaksanaan penyusunan program, rencana kerja, anggaran, evaluasi dan laporan pengkajian, perakitan dan pengembangan teknologi pertanian tepat guna spesifik lokasi
                         </Text>
                     </View>
 
                     <View style={{
                         flexDirection: 'row'
                     }}>
-                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} />
+                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 25} />
                         <Text style={{
                             fontFamily: fonts.primary[400],
-                            fontSize: windowWidth / 22,
+                            fontSize: windowWidth / 25,
                             left: 5,
+                            // flex: 1,
                             textAlign: 'justify',
                             color: colors.black
-                        }}>Penyiapan kerja sama, informasi, dokumentasi, serta penyebarluasan dan pendayagunaan hasil pengkajian, perakitan, dan pengembangan teknologi pertanian tepat guna spesifik lokasi
+                        }}>Pelaksanaan inventarisasi dan identifikasi kebutuhan teknologi pertanian tepat guna spesifik lokasi
+                        </Text>
+                    </View>
+
+
+
+
+                    <View style={{
+                        flexDirection: 'row'
+                    }}>
+                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 25} />
+                        <Text style={{
+                            fontFamily: fonts.primary[400],
+                            fontSize: windowWidth / 25,
+                            left: 5,
+                            flex: 1,
+                            textAlign: 'justify',
+                            color: colors.black
+                        }}>Pelaksanaan pengembangan teknologi dan diseminasi hasil pengkajian serta perakitan materi penyuluhan
                         </Text>
                     </View>
                     <View style={{
                         flexDirection: 'row'
                     }}>
-                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} />
+                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 25} />
                         <Text style={{
                             fontFamily: fonts.primary[400],
-                            fontSize: windowWidth / 22,
+                            fontSize: windowWidth / 25,
                             left: 5,
+                            flex: 1,
                             textAlign: 'justify',
                             color: colors.black
-                        }}>Pemberian pelayanan teknik pengkajian, perakitan dan pengembangan teknologi tepat guna spesifik lokasi
+                        }}>Penyiapan kerjasama, informasi, dan dokumentasi, serta penyebarluasan dan pendayagunaan hasil pengkajian, perakitan dan pengembangan teknologi pertanian tepat guna spesifik lokasi.
                         </Text>
                     </View>
                     <View style={{
                         flexDirection: 'row'
                     }}>
-                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} />
+                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 25} />
                         <Text style={{
                             fontFamily: fonts.primary[400],
-                            fontSize: windowWidth / 22,
+                            fontSize: windowWidth / 25,
                             left: 5,
+                            flex: 1,
                             textAlign: 'justify',
                             color: colors.black
-                        }}>Pelaksanaan inventarisasi dan identifikasi kebutuhan teknologi tepat guna spesifik lokasi
+                        }}>Pemberian pelayanan teknik kegiatan pengkajian dan perakitan teknologi pertanian tepat guna spesifik lokasi
+                        </Text>
+                    </View>
+                    <View style={{
+                        flexDirection: 'row'
+                    }}>
+                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 25} />
+                        <Text style={{
+                            fontFamily: fonts.primary[400],
+                            fontSize: windowWidth / 25,
+                            left: 5,
+                            flex: 1,
+                            textAlign: 'justify',
+                            color: colors.black
+                        }}>Pelaksanaan urusan kepegawaian, keuangan, rumah tangga dan perlengkapan BPTP
                         </Text>
                     </View>
                     {/*  */}
@@ -145,7 +184,13 @@ export default function ({ navigation }) {
                 alignItems: 'flex-end',
                 padding: 10,
             }}>
-                <TouchableOpacity onPress={() => navigation.navigate('Visimisi5')} style={{
+                <TouchableOpacity onPress={() => {
+
+                    navigation.replace('MainApp')
+                    // navigation.navigate('Visimisi5')
+                }
+
+                } style={{
                     padding: 10,
                     // backgroundColor: colors.primary,
                     flexDirection: 'row',

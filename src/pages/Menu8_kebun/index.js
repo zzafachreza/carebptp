@@ -14,6 +14,7 @@ import MyCarouser from '../../components/MyCarouser';
 export default function ({ navigation }) {
     const [data, setData] = useState({
         nama: '',
+        instansi: '',
         email: '',
         telepon: '',
         jenis_layanan: '',
@@ -152,6 +153,7 @@ export default function ({ navigation }) {
         console.log('kirim to server', data);
 
         if (data.nama.length === 0) { showMessage({ message: 'Maaf nama masih kosong !' }); }
+        else if (data.instansi.length === 0) { showMessage({ message: 'Maaf instansi masih kosong !' }); }
         else if (data.email.length === 0) { showMessage({ message: 'Maaf email masih kosong !' }); }
         else if (data.telepon.length === 0) { showMessage({ message: 'Maaf telepon masih kosong !' }); }
         else if (data.jenis_layanan.length === 0) { showMessage({ message: 'Maaf jenis_layanan masih kosong !' }); }
@@ -189,56 +191,13 @@ export default function ({ navigation }) {
                     fontFamily: fonts.secondary[600],
                     fontSize: windowWidth / 17,
                     marginVertical: 10,
-                }}>Layanan Kebun Percobaan</Text>
+                }}>Instalasi Penelitian dan Pengkajian Teknologi Pertanian</Text>
 
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama' iconname='create-outline' />
+                <MyInput value={data.instansi} onChangeText={x => setData({ ...data, instansi: x, })} label='Instansi' iconname='create-outline' />
                 <MyInput value={data.email} onChangeText={x => setData({ ...data, email: x, })} label='Email' iconname='create-outline' />
-                <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='Telepon' iconname='create-outline' />
-                <MyPicker
-                    onValueChange={x => {
-
-
-                        if (x == 'Lainnya') {
-                            setBuka1(true);
-                            setData({
-                                ...data,
-                                jenis_layanan: '',
-                            })
-                        } else {
-                            setBuka1(false);
-                            setData({
-                                ...data,
-                                jenis_layanan: x,
-                            })
-                        }
-                    }
-                    }
-                    iconname="list"
-                    label="Jenis Layanan"
-                    data={[
-
-
-                        {
-                            label: 'Layanan Penelusuran Informasi',
-                            value: 'Layanan Penelusuran Informasi',
-                        },
-
-                        {
-                            label: 'Layanan Jurnal Online',
-                            value: 'Layanan Jurnal Online',
-                        },
-                        {
-                            label: 'Layanan Referensi',
-                            value: 'Layanan Referensi',
-                        },
-
-                        {
-                            label: 'Lainnya',
-                            value: 'Lainnya',
-                        },
-                    ]}
-                />
-                {buka1 && <MyInput value={data.jenis_layanan} onChangeText={x => setData({ ...data, jenis_layanan: x, })} label='Lainnya : ' iconname='create-outline' />}
+                <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='No Whatsapp' iconname='create-outline' />
+                <MyInput value={data.jenis_layanan} onChangeText={x => setData({ ...data, jenis_layanan: x, })} multiline label='Jenis Layanan yang dibutuhkan' iconname='create-outline' />
 
 
 
@@ -250,7 +209,7 @@ export default function ({ navigation }) {
                 <UploadFoto
                     onPress1={() => getCamera(1)}
                     onPress2={() => getGallery(1)}
-                    label="Upload Foto Dokumen"
+                    label="Upload Identitas / Dokumen"
                     foto={foto}
                 />
 

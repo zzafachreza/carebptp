@@ -76,20 +76,29 @@ export default function ({ navigation }) {
                         height: 100,
                     }} />
                 </View>
-                <View>
+                <View style={{
+                    padding: 10
+                }}>
                     {/*  */}
                     <Text style={{
                         marginTop: 10,
                         fontFamily: fonts.primary[600],
-                        fontSize: windowWidth / 17,
+                        fontSize: windowWidth / 20,
                         color: colors.black
-                    }}>Tugas</Text>
+                    }}>Strategi Utama</Text>
                     <Text style={{
                         fontFamily: fonts.primary[400],
-                        fontSize: windowWidth / 22,
-                        textAlign: 'left',
+                        fontSize: windowWidth / 25,
+                        textAlign: 'justify',
                         color: colors.black
-                    }}>Melaksanakan pengkajian, perakitan, pengembangan dan diseminasi teknologi pertanian tepat guna spesifik lokasi.
+                    }}>Memfasilitasi terwujudnya upaya peningkatan kapasitas dan kreativitas semua komponen yang ada di BPTP Sulawesi Tengah dalam menghasilkan dan mengembangkan inovasi teknologi spesifik lokasi.
+                    </Text>
+                    <Text style={{
+                        fontFamily: fonts.primary[400],
+                        fontSize: windowWidth / 25,
+                        textAlign: 'justify',
+                        color: colors.black
+                    }}>Membangun dan menjembatani aliansi strategis antara pengguna di Sulawesi Tengah dengan Balai Komoditas/Puslitbang/Puslit/Balai Besar/LRPI serta berbagai Lembaga penelitian dari dalam dan luar negeri.
                     </Text>
                     {/*  */}
                 </View>

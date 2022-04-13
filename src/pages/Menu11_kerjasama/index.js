@@ -193,7 +193,7 @@ export default function ({ navigation }) {
 
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama' iconname='create-outline' />
                 <MyInput value={data.email} onChangeText={x => setData({ ...data, email: x, })} label='Email' iconname='create-outline' />
-                <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='Telepon' iconname='create-outline' />
+                <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='No Whatsapp' iconname='create-outline' />
                 <MyPicker
                     onValueChange={x => {
 
@@ -219,17 +219,17 @@ export default function ({ navigation }) {
 
 
                         {
-                            label: 'Layanan Penelusuran Informasi',
-                            value: 'Layanan Penelusuran Informasi',
+                            label: 'Kerjasama Penelitian',
+                            value: 'Kerjasama Penelitian',
                         },
 
                         {
-                            label: 'Layanan Jurnal Online',
-                            value: 'Layanan Jurnal Online',
+                            label: 'Narasumber',
+                            value: 'Narasumber',
                         },
                         {
-                            label: 'Layanan Referensi',
-                            value: 'Layanan Referensi',
+                            label: 'Pendampingan Teknologi',
+                            value: 'Pendampingan Teknologi',
                         },
 
                         {
@@ -250,7 +250,7 @@ export default function ({ navigation }) {
                 <UploadFoto
                     onPress1={() => getCamera(1)}
                     onPress2={() => getGallery(1)}
-                    label="Upload Foto Dokumen"
+                    label="Upload Identitas / Dokumen"
                     foto={foto}
                 />
 

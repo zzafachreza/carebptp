@@ -7,6 +7,7 @@ import {
   ImageBackground,
   TouchableNativeFeedback,
   Image,
+  Linking,
 } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { colors } from '../../utils/colors';
@@ -32,20 +33,30 @@ export default function MyCarouser({ jenis = 1 }) {
   const [data, setData] = useState([]);
 
   const renderCarouselItem = ({ item }) => (
-    <Image
-      source={{ uri: item.image }}
-      style={{
-        resizeMode: 'cover',
-        height: 180,
-        width: 300,
-        borderRadius: 10,
-      }}
-    />
+    <TouchableOpacity onPress={() => {
+      if (jenis == "konsul") {
+
+        if (item.id == 32) {
+          Linking.openURL('https://www.litbang.pertanian.go.id/hasil/600');
+        }
+      }
+    }}>
+      <Image
+        source={{ uri: item.image }}
+        style={{
+          resizeMode: 'cover',
+          height: 180,
+          width: 300,
+          borderRadius: 10,
+        }}
+      />
+    </TouchableOpacity>
   );
 
   return (
     <View>
       <Carousel
+
         loop={true}
         // layout="stack"
         layoutCardOffset={18}

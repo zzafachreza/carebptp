@@ -13,7 +13,7 @@ import {
 import { getData, storeData } from '../../utils/localStorage';
 import axios from 'axios';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MyButton } from '../../components';
+import { MyButton, MyInput, MyPicker } from '../../components';
 import { colors } from '../../utils/colors';
 import { TouchableOpacity, Swipeable } from 'react-native-gesture-handler';
 import { fonts, windowWidth } from '../../utils/fonts';
@@ -25,6 +25,10 @@ import 'intl/locale-data/jsonp/en';
 export default function Cart({ navigation, route }) {
   const [user, setUser] = useState({});
   const [data, setData] = useState([]);
+  const [buka, setbuka] = useState(true);
+  const [tipe, setTipe] = useState('DI ANTAR');
+  const [alamat, setAlamat] = useState('');
+
   const isFocused = useIsFocused();
   //   useEffect(() => {
 
@@ -58,8 +62,16 @@ export default function Cart({ navigation, route }) {
     axios.post('https://carebptp.zavalabs.com/api/cart_hapus.php', {
       id_cart: x
     }).then(x => {
-      getData('token').then(res => {
-        __getDataBarang(res.token);
+      getData('token').then(tkn => {
+        __getDataBarang(tkn.token);
+        axios
+          .post('https://carebptp.zavalabs.com/api/1_cart.php', {
+            token: tkn.token
+          })
+          .then(res => {
+            console.log('car', res.data);
+            setCart(res.data);
+          });
       });
 
       getData('cart').then(xx => {
@@ -67,6 +79,9 @@ export default function Cart({ navigation, route }) {
       })
     })
   };
+
+
+
 
   var sub = 0;
   data.map((item, key) => {
@@ -169,6 +184,43 @@ export default function Cart({ navigation, route }) {
       <View style={{ padding: 10, flex: 1 }}>
         <FlatList data={data} renderItem={__renderItem} />
       </View>
+      <View style={{
+        padding: 10,
+      }}>
+        <MyPicker
+          onValueChange={x => {
+
+            () => setTipe(x);
+
+            if (x == "AMBIL DITEMPAT") {
+              setAlamat('Ambil Produk Ke Lokasi');
+              setbuka(false);
+            } else {
+              setAlamat('');
+              setbuka(true);
+            }
+          }
+          }
+          iconname="list"
+          label="Jenis Pengiriman"
+          data={[
+            {
+              label: 'DI ANTAR',
+              value: 'DI ANTAR',
+            },
+            {
+              label: 'AMBIL DITEMPAT',
+              value: 'AMBIL DITEMPAT',
+            },
+          ]}
+        />
+        {buka &&
+
+          <MyInput label="Alamat Pengiriman" multiline onChangeText={val => setAlamat(val)} value={alamat} />
+        }
+
+      </View>
+
       <View
         style={{
           flexDirection: 'row',
@@ -200,10 +252,11 @@ export default function Cart({ navigation, route }) {
               axios.post('https://carebptp.zavalabs.com/api/wa.php', {
                 token: res.token,
                 nama: user.nama_lengkap,
-                profesi: user.profesi
+                profesi: user.profesi,
+                tipe: tipe,
+                alamat: alamat
               }).then(rr => {
                 console.log(rr.data)
-
                 Linking.openURL('https://api.whatsapp.com/send?phone=6281319456595&text=' + rr.data);
               })
 

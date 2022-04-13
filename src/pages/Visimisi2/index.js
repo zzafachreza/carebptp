@@ -9,6 +9,7 @@ import {
     Image,
     Animated,
     TouchableOpacity,
+    Linking,
 } from 'react-native';
 import { colors } from '../../utils/colors';
 import { fonts, windowWidth } from '../../utils/fonts';
@@ -76,70 +77,128 @@ export default function ({ navigation }) {
                         height: 100,
                     }} />
                 </View>
-                <View>
+                <View style={{
+                    padding: 10,
+                }}>
                     <Text style={{
                         marginTop: 10,
                         fontFamily: fonts.primary[600],
-                        fontSize: windowWidth / 17,
+                        fontSize: windowWidth / 20,
+                        color: colors.black
+                    }}>Visi</Text>
+                    <Text style={{
+                        fontFamily: fonts.primary[400],
+                        fontSize: windowWidth / 25,
+                        textAlign: 'justify',
+                        color: colors.black
+                    }}>Menjadi Lembaga penyedia dan penyebar teknologi pertanian spesifik lokasi untuk mendukung pembangunan pertanian yang Tangguh dan peningkatan kesejahteraan masyarakat petani Provinsi Sulawesi Tengah
+                    </Text>
+                    <Text style={{
+                        marginTop: 10,
+                        fontFamily: fonts.primary[600],
+                        fontSize: windowWidth / 20,
                         color: colors.black
                     }}>Misi</Text>
                     <View style={{
                         flexDirection: 'row'
                     }}>
-                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} />
+                        <Text style={{
+                            fontFamily: fonts.primary[600],
+                            fontSize: windowWidth / 25,
+                            color: colors.black
+                        }}>1.</Text>
+                        {/* <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} /> */}
                         <Text style={{
                             fontFamily: fonts.primary[400],
                             fontSize: windowWidth / 22,
                             left: 5,
+                            flex: 1,
                             textAlign: 'justify',
                             color: colors.black
-                        }}>Mewujudkan ketahanan pangan dan gizi
+                        }}>Mewujudkan Upaya Regionalisasi Dan Desentralisasi kegiatan pengkajian berdasarkan keragaman agroekosistem wilayah
                         </Text>
                     </View>
 
                     <View style={{
                         flexDirection: 'row'
                     }}>
-                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} />
+                        <Text style={{
+                            fontFamily: fonts.primary[600],
+                            fontSize: windowWidth / 25,
+                            color: colors.black
+                        }}>2.</Text>
+                        {/* <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} /> */}
                         <Text style={{
                             fontFamily: fonts.primary[400],
-                            fontSize: windowWidth / 22,
+                            fontSize: windowWidth / 25,
                             left: 5,
+                            flex: 1,
                             textAlign: 'justify',
                             color: colors.black
-                        }}>Meningkatkan Nilai Tambah dan Daya Saing Komoditas Pertanian
+                        }}>Mendorong Percepatan Pembangunan Pertanian dalam mendukung ketahanan pangan yang berorientasi agribisnis
                         </Text>
                     </View>
                     <View style={{
                         flexDirection: 'row'
                     }}>
-                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} />
+                        <Text style={{
+                            fontFamily: fonts.primary[600],
+                            fontSize: windowWidth / 25,
+                            color: colors.black
+                        }}>3.</Text>
+                        {/* <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} /> */}
                         <Text style={{
                             fontFamily: fonts.primary[400],
                             fontSize: windowWidth / 22,
                             left: 5,
+                            flex: 1,
                             textAlign: 'justify',
                             color: colors.black
-                        }}>Mewujudkan kesejahteraan petani
+                        }}>Mengidentifikasi Umpan Balik bagi manajemen pengguna pengkajian di wilayah Sulawesi Tengah
                         </Text>
                     </View>
                     <View style={{
                         flexDirection: 'row'
                     }}>
-                        <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} />
+                        <Text style={{
+                            fontFamily: fonts.primary[600],
+                            fontSize: windowWidth / 25,
+                            color: colors.black
+                        }}>4.</Text>
+                        {/* <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} /> */}
                         <Text style={{
                             fontFamily: fonts.primary[400],
                             fontSize: windowWidth / 22,
                             left: 5,
+                            flex: 1,
                             textAlign: 'justify',
                             color: colors.black
-                        }}>Mewujudkan Kementerian Pertanian yang transparan, akuntabel, profesional dan berintegritas tinggi
+                        }}>Mempercepat Transfer Teknologi Kepada Pengguna dengan memperkuat keterpaduan antar peneliti, penyuluh dan pengguna
                         </Text>
                     </View>
 
 
                 </View>
             </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => Linking.openURL('https://sulteng.litbang.pertanian.go.id/ind/index.php/profil/misi-visi')} style={{
+                padding: 10,
+                // backgroundColor: colors.primary,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center'
+
+            }}>
+                <Text style={{
+                    fontFamily: fonts.primary[400],
+                    fontSize: windowWidth / 22,
+                    textAlign: 'left',
+                    color: colors.secondary,
+                    right: 5,
+                }}>Selengkapnya</Text>
+                <Icon type='ionicon' name='open-outline' color={colors.secondary} size={windowWidth / 22} />
+            </TouchableOpacity>
+
             <View style={{
                 justifyContent: 'center',
                 alignItems: 'flex-end',
