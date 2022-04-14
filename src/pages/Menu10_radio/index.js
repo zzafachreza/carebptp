@@ -36,6 +36,7 @@ export default function ({ navigation }) {
         iklan_konmersial: '',
         iklan_nonkomersial: '',
         tarif_layanan: '',
+        telepon: '',
 
         foto: '',
 
@@ -176,6 +177,7 @@ export default function ({ navigation }) {
         else if (data.alamat.length === 0) { showMessage({ message: 'Maaf alamat masih kosong !' }); }
         else if (data.email.length === 0) { showMessage({ message: 'Maaf email masih kosong !' }); }
         else if (data.jenis_layanan.length === 0) { showMessage({ message: 'Maaf jenis_layanan masih kosong !' }); }
+        else if (data.telepon.length === 0) { showMessage({ message: 'Maaf telepon masih kosong !' }); }
         // else if (data.jenis_iklan.length === 0) { showMessage({ message: 'Maaf jenis_iklan masih kosong !' }); }
         // else if (data.iklan_konmersial.length === 0) { showMessage({ message: 'Maaf iklan_konmersial masih kosong !' }); }
         // else if (data.iklan_nonkomersial.length === 0) { showMessage({ message: 'Maaf iklan_nonkomersial masih kosong !' }); }
@@ -304,7 +306,7 @@ export default function ({ navigation }) {
 
                 <MyInput value={data.alamat} onChangeText={x => setData({ ...data, alamat: x, })} label='alamat' iconname='create-outline' />
                 <MyInput value={data.email} onChangeText={x => setData({ ...data, email: x, })} label='email' iconname='create-outline' />
-
+                <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='No Whatsapp' iconname='create-outline' />
                 {/* <MyPicker
                     onValueChange={x => {
 
@@ -436,7 +438,7 @@ export default function ({ navigation }) {
  */}
 
 
-                <MyInput value={data.jenis_layanan} multiline onChangeText={x => setData({ ...data, jenis_layanan: x, })} label='Layanan Publikasi dan Desiminasi' iconname='create-outline' />
+                <MyInput value={data.jenis_layanan} multiline onChangeText={x => setData({ ...data, jenis_layanan: x, })} label='Layanan Publikasi dan Desiminasi' label2="(Naskah Siaran Radio)" iconname='create-outline' />
 
 
 
@@ -445,7 +447,7 @@ export default function ({ navigation }) {
 
 
                 <MyGap jarak={5} />
-
+                <Text style={{ fontFamily: fonts.secondary[600], fontSize: 12, textAlign: 'center' }}>(Dokumen PDF maksimal 5 Mb)</Text>
                 <MyButton
                     warna={colors.danger}
                     title="Upload Dokumen PDF"
@@ -465,7 +467,14 @@ export default function ({ navigation }) {
                             // Printing the log realted to the file
                             console.log('res : ' + JSON.stringify(res));
                             // Setting the state to show single file attributes
-                            setPath(res[0]);
+                            console.log('sizw', res[0].size)
+                            if (res[0].size > 5000000) {
+                                alert('Maaf dokumen pdf maksimal 5 Mb')
+                            } else {
+                                setPath(res[0]);
+                            }
+
+
                         } catch (err) {
                             setSingleFile(null);
                             // Handling any exception (If any)
@@ -481,7 +490,8 @@ export default function ({ navigation }) {
 
                     }}
                 />
-                <Text>{path.name}</Text>
+                <Text style={{ fontFamily: fonts.secondary[400], fontSize: 12, textAlign: 'center' }}>{path.name}</Text>
+
 
                 {/* <UploadFoto
                     onPress1={() => getCamera(1)}

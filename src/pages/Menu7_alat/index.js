@@ -201,7 +201,7 @@ export default function ({ navigation }) {
                     fontFamily: fonts.secondary[600],
                     fontSize: windowWidth / 17,
                     marginVertical: 10,
-                }}>Layanan Alat dan Mesin Pertanian</Text>
+                }}>Layanan Peminjaman Alat dan Mesin Pertanian</Text>
 
                 <MyPicker
                     onValueChange={x => {
@@ -235,7 +235,7 @@ export default function ({ navigation }) {
                 <MyInput value={data.item_pinjam} onChangeText={x => setData({ ...data, item_pinjam: x, })} label='Item apa yang ingin anda pinjam/pesan ( Harap masukkan nomor produk )' iconname='create-outline' />
                 <MyInput value={data.opsi_produk} onChangeText={x => setData({ ...data, opsi_produk: x, })} label='Opsi produk ( Pilih ukuran dan jumlah untuk tiap warna )' iconname='create-outline' />
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama Anda' iconname='create-outline' />
-                <MyInput value={data.telepon} onChangeText={x => setData({ ...data, telepon: x, })} label='No Whatsapp' iconname='create-outline' />
+                <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='No Whatsapp' iconname='create-outline' />
                 <MyInput value={data.email} onChangeText={x => setData({ ...data, email: x, })} label='Email' iconname='create-outline' />
 
                 <MyGap jarak={10} />
