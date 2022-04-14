@@ -77,9 +77,28 @@ export default function ({ navigation }) {
                         height: 100,
                     }} />
                 </View>
+                <TouchableOpacity onPress={() => Linking.openURL('https://sulteng.litbang.pertanian.go.id/ind/index.php/profil/misi-visi')} style={{
+                    padding: 5,
+                    // backgroundColor: colors.primary,
+                    flexDirection: 'row',
+                    justifyContent: 'flex-end',
+                    alignItems: 'center'
+
+                }}>
+                    <Text style={{
+                        fontFamily: fonts.primary[400],
+                        fontSize: windowWidth / 22,
+                        textAlign: 'left',
+                        color: colors.secondary,
+                        right: 5,
+                    }}>Selengkapnya</Text>
+                    <Icon type='ionicon' name='open-outline' color={colors.secondary} size={windowWidth / 22} />
+                </TouchableOpacity>
                 <View style={{
                     padding: 10,
                 }}>
+
+
                     <Text style={{
                         marginTop: 10,
                         fontFamily: fonts.primary[600],
@@ -181,23 +200,6 @@ export default function ({ navigation }) {
                 </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => Linking.openURL('https://sulteng.litbang.pertanian.go.id/ind/index.php/profil/misi-visi')} style={{
-                padding: 10,
-                // backgroundColor: colors.primary,
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'center'
-
-            }}>
-                <Text style={{
-                    fontFamily: fonts.primary[400],
-                    fontSize: windowWidth / 22,
-                    textAlign: 'left',
-                    color: colors.secondary,
-                    right: 5,
-                }}>Selengkapnya</Text>
-                <Icon type='ionicon' name='open-outline' color={colors.secondary} size={windowWidth / 22} />
-            </TouchableOpacity>
 
             <View style={{
                 justifyContent: 'center',

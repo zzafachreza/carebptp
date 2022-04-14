@@ -197,7 +197,70 @@ export default function ({ navigation }) {
                 <MyInput value={data.instansi} onChangeText={x => setData({ ...data, instansi: x, })} label='Instansi' iconname='create-outline' />
                 <MyInput value={data.email} onChangeText={x => setData({ ...data, email: x, })} label='Email' iconname='create-outline' />
                 <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='No Whatsapp' iconname='create-outline' />
-                <MyInput value={data.jenis_layanan} onChangeText={x => setData({ ...data, jenis_layanan: x, })} multiline label='Jenis Layanan yang dibutuhkan' iconname='create-outline' />
+
+
+                <MyPicker
+                    onValueChange={x => {
+
+
+                        if (x == 'Lainnya') {
+                            setBuka1(true);
+                            setData({
+                                ...data,
+                                jenis_layanan: '',
+                            })
+                        } else {
+                            setBuka1(false);
+                            setData({
+                                ...data,
+                                jenis_layanan: x,
+                            })
+                        }
+                    }
+                    }
+                    iconname="list"
+                    label="Jenis Layanan yang dibutuhkan"
+                    data={[
+
+                        {
+                            label: 'Prosesing Benih Padi',
+                            value: 'Prosesing Benih Padi',
+                        },
+                        {
+                            label: 'Prosesing Benih Jagung',
+                            value: 'Prosesing Benih Jagung',
+                        },
+                        {
+                            label: 'Mesin Pemipil Jagung',
+                            value: 'Mesin Pemipil Jagung',
+                        },
+                        {
+                            label: 'Mesin Pembersih Jagung',
+                            value: 'Mesin Pembersih Jagung',
+                        },
+                        {
+                            label: 'Lantai Jemur',
+                            value: 'Lantai Jemur',
+                        },
+                        {
+                            label: 'Gudang Penyimpanan Benih yang testandarisasi dan tersertifikasi',
+                            value: 'Gudang Penyimpanan Benih yang testandarisasi dan tersertifikasi',
+                        },
+                        {
+                            label: 'Lahan Pertanian',
+                            value: 'Lahan Pertanian',
+                        },
+
+
+                        {
+                            label: 'Lainnya',
+                            value: 'Lainnya',
+                        },
+                    ]}
+                />
+                {buka1 && <MyInput value={data.jenis_layanan} onChangeText={x => setData({ ...data, jenis_layanan: x, })} label='Lainnya : ' iconname='create-outline' />}
+
+
 
 
 
