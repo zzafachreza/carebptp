@@ -216,15 +216,15 @@ export default function ({ navigation }) {
                     }
                     }
                     iconname="list"
-                    label="Apakah Anda pelanggan baru atau pernah membeli sebelumnya?"
+                    label="Apakah Anda pelanggan baru atau pernah meminjam sebelumnya?"
                     data={[
                         {
-                            label: 'Saya pelanggan baru',
-                            value: 'Saya pelanggan baru',
+                            label: 'Saya peminjam baru',
+                            value: 'Saya peminjam baru',
                         },
                         {
-                            label: 'Saya pelanggan yang pernah membeli sebelumnya',
-                            value: 'Saya pelanggan yang pernah membeli sebelumnya',
+                            label: 'Saya pelanggan yang pernah meminjam sebelumnya',
+                            value: 'Saya pelanggan yang pernah meminjam sebelumnya',
                         },
 
 
@@ -232,8 +232,51 @@ export default function ({ navigation }) {
                     ]}
                 />
 
-                <MyInput value={data.item_pinjam} onChangeText={x => setData({ ...data, item_pinjam: x, })} label='Item apa yang ingin anda pinjam/pesan ( Harap masukkan nomor produk )' iconname='create-outline' />
-                <MyInput value={data.opsi_produk} onChangeText={x => setData({ ...data, opsi_produk: x, })} label='Opsi produk ( Pilih ukuran dan jumlah untuk tiap warna )' iconname='create-outline' />
+
+                <MyPicker
+                    value={data.item_pinjam}
+                    onValueChange={x => {
+
+
+                        setData({
+                            ...data,
+                            item_pinjam: x,
+                        })
+
+                    }
+                    }
+                    iconname="list"
+                    label="Produk apa yang ingin anda pinjam ?"
+                    data={[
+                        {
+                            label: 'Traktor roda empat mini iseki',
+                            value: 'Traktor roda empat mini iseki',
+                        },
+                        {
+                            label: 'Traktor roda empat john deer',
+                            value: 'Traktor roda empat john deer',
+                        },
+                        {
+                            label: 'Combine harvester mini',
+                            value: 'Combine harvester mini',
+                        },
+                        {
+                            label: 'Transplanter indojarwo',
+                            value: 'Transplanter indojarwo',
+                        },
+                        {
+                            label: 'Hand traktor',
+                            value: 'Hand traktor',
+                        },
+
+
+                    ]}
+                />
+                {/* 
+                <MyInput value={data.item_pinjam} onChangeText={x => setData({ ...data, item_pinjam: x, })} label='Item apa yang ingin anda pinjam ( Harap masukkan nomor produk )' iconname='create-outline' /> */}
+
+
+                <MyInput value={data.opsi_produk} onChangeText={x => setData({ ...data, opsi_produk: x, })} label='Opsi produk ( ukuran dan jumlah untuk tiap warna )' iconname='create-outline' />
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama Anda' iconname='create-outline' />
                 <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='No Whatsapp' iconname='create-outline' />
                 <MyInput value={data.email} onChangeText={x => setData({ ...data, email: x, })} label='Email' iconname='create-outline' />

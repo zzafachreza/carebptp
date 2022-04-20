@@ -212,7 +212,7 @@ export default function ({ navigation }) {
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama' iconname='create-outline' />
                 <MyInput value={data.email} onChangeText={x => setData({ ...data, email: x, })} label='Email' iconname='create-outline' />
                 <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='No Whatsapp' iconname='create-outline' />
-                {/* <MyPicker
+                <MyPicker
                     onValueChange={x => {
 
 
@@ -234,7 +234,10 @@ export default function ({ navigation }) {
                     iconname="list"
                     label="Jenis Layanan"
                     data={[
-
+                        {
+                            label: 'Layanan Sirkulasi',
+                            value: 'Layanan Sirkulasi',
+                        },
 
                         {
                             label: 'Layanan Penelusuran Informasi',
@@ -249,16 +252,31 @@ export default function ({ navigation }) {
                             label: 'Layanan Referensi',
                             value: 'Layanan Referensi',
                         },
-
+                        {
+                            label: 'Bimbingan Pengunjung & Petugas Perpustakaan',
+                            value: 'Bimbingan Pengunjung & Petugas Perpustakaan',
+                        },
+                        {
+                            label: 'Layanan Informasi Terbaru & Terseleksi',
+                            value: 'Layanan Informasi Terbaru & Terseleksi',
+                        },
+                        {
+                            label: 'Literasi Informasi',
+                            value: 'Literasi Informasi',
+                        },
+                        {
+                            label: 'Layanan Library Tour',
+                            value: 'Layanan Library Tour',
+                        },
                         {
                             label: 'Lainnya',
                             value: 'Lainnya',
                         },
                     ]}
                 />
-                {buka1 && <MyInput value={data.jenis_layanan} onChangeText={x => setData({ ...data, jenis_layanan: x, })} label='Lainnya : ' iconname='create-outline' />} */}
+                {buka1 && <MyInput value={data.jenis_layanan} onChangeText={x => setData({ ...data, jenis_layanan: x, })} label='Lainnya : ' iconname='create-outline' />}
 
-                <MyInput value={data.jenis_layanan} onChangeText={x => setData({ ...data, jenis_layanan: x, })} label='Layanan yang dibutuhkan' multiline iconname='create-outline' />
+
 
 
 

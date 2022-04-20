@@ -12,7 +12,7 @@ import {
     Linking,
 } from 'react-native';
 import { colors } from '../../utils/colors';
-import { fonts, windowWidth } from '../../utils/fonts';
+import { fonts, windowHeight, windowWidth } from '../../utils/fonts';
 import { color, asin } from 'react-native-reanimated';
 import { getData, storeData } from '../../utils/localStorage';
 import { PermissionsAndroid } from 'react-native';
@@ -43,7 +43,7 @@ export default function ({ navigation }) {
     }, []);
 
     return (
-        <ImageBackground source={require('../../assets/back.png')} style={{
+        <ImageBackground source={require('../../assets/care2.png')} style={{
             // paddingHorizontal: 10,
             flex: 1,
 
@@ -67,137 +67,35 @@ export default function ({ navigation }) {
                 padding: 10,
             }}>
                 <View style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: 10,
-
-                }}>
-                    <Image source={require('../../assets/logo_utama.png')} style={{
-                        width: 100,
-                        height: 100,
-                    }} />
-                </View>
-                <TouchableOpacity onPress={() => Linking.openURL('https://sulteng.litbang.pertanian.go.id/ind/index.php/profil/misi-visi')} style={{
-                    padding: 5,
-                    // backgroundColor: colors.primary,
-                    flexDirection: 'row',
                     justifyContent: 'flex-end',
-                    alignItems: 'center'
-
-                }}>
-                    <Text style={{
-                        fontFamily: fonts.primary[400],
-                        fontSize: windowWidth / 22,
-                        textAlign: 'left',
-                        color: colors.secondary,
-                        right: 5,
-                    }}>Selengkapnya</Text>
-                    <Icon type='ionicon' name='open-outline' color={colors.secondary} size={windowWidth / 22} />
-                </TouchableOpacity>
-                <View style={{
+                    alignItems: 'flex-end',
                     padding: 10,
+                    height: windowHeight / 5
+
                 }}>
+                    <TouchableOpacity onPress={() => Linking.openURL('https://sulteng.litbang.pertanian.go.id/ind/index.php/profil/misi-visi')} style={{
+                        padding: 5,
+                        // backgroundColor: colors.primary,
+                        flexDirection: 'row',
+                        justifyContent: 'flex-end',
+                        alignItems: 'center'
 
-
-                    <Text style={{
-                        marginTop: 10,
-                        fontFamily: fonts.primary[600],
-                        fontSize: windowWidth / 20,
-                        color: colors.black
-                    }}>Visi</Text>
-                    <Text style={{
-                        fontFamily: fonts.primary[400],
-                        fontSize: windowWidth / 25,
-                        textAlign: 'justify',
-                        color: colors.black
-                    }}>Menjadi Lembaga penyedia dan penyebar teknologi pertanian spesifik lokasi untuk mendukung pembangunan pertanian yang Tangguh dan peningkatan kesejahteraan masyarakat petani Provinsi Sulawesi Tengah
-                    </Text>
-                    <Text style={{
-                        marginTop: 10,
-                        fontFamily: fonts.primary[600],
-                        fontSize: windowWidth / 20,
-                        color: colors.black
-                    }}>Misi</Text>
-                    <View style={{
-                        flexDirection: 'row'
                     }}>
-                        <Text style={{
-                            fontFamily: fonts.primary[600],
-                            fontSize: windowWidth / 25,
-                            color: colors.black
-                        }}>1.</Text>
-                        {/* <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} /> */}
-                        <Text style={{
-                            fontFamily: fonts.primary[400],
-                            fontSize: windowWidth / 22,
-                            left: 5,
-                            flex: 1,
-                            textAlign: 'justify',
-                            color: colors.black
-                        }}>Mewujudkan Upaya Regionalisasi Dan Desentralisasi kegiatan pengkajian berdasarkan keragaman agroekosistem wilayah
-                        </Text>
-                    </View>
-
-                    <View style={{
-                        flexDirection: 'row'
-                    }}>
-                        <Text style={{
-                            fontFamily: fonts.primary[600],
-                            fontSize: windowWidth / 25,
-                            color: colors.black
-                        }}>2.</Text>
-                        {/* <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} /> */}
                         <Text style={{
                             fontFamily: fonts.primary[400],
                             fontSize: windowWidth / 25,
-                            left: 5,
-                            flex: 1,
-                            textAlign: 'justify',
-                            color: colors.black
-                        }}>Mendorong Percepatan Pembangunan Pertanian dalam mendukung ketahanan pangan yang berorientasi agribisnis
-                        </Text>
-                    </View>
-                    <View style={{
-                        flexDirection: 'row'
-                    }}>
-                        <Text style={{
-                            fontFamily: fonts.primary[600],
-                            fontSize: windowWidth / 25,
-                            color: colors.black
-                        }}>3.</Text>
-                        {/* <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} /> */}
-                        <Text style={{
-                            fontFamily: fonts.primary[400],
-                            fontSize: windowWidth / 22,
-                            left: 5,
-                            flex: 1,
-                            textAlign: 'justify',
-                            color: colors.black
-                        }}>Mengidentifikasi Umpan Balik bagi manajemen pengguna pengkajian di wilayah Sulawesi Tengah
-                        </Text>
-                    </View>
-                    <View style={{
-                        flexDirection: 'row'
-                    }}>
-                        <Text style={{
-                            fontFamily: fonts.primary[600],
-                            fontSize: windowWidth / 25,
-                            color: colors.black
-                        }}>4.</Text>
-                        {/* <Icon type="ionicon" name='checkbox' color={colors.primary} size={windowWidth / 22} /> */}
-                        <Text style={{
-                            fontFamily: fonts.primary[400],
-                            fontSize: windowWidth / 22,
-                            left: 5,
-                            flex: 1,
-                            textAlign: 'justify',
-                            color: colors.black
-                        }}>Mempercepat Transfer Teknologi Kepada Pengguna dengan memperkuat keterpaduan antar peneliti, penyuluh dan pengguna
-                        </Text>
-                    </View>
-
-
+                            textAlign: 'left',
+                            color: colors.secondary,
+                            right: 5,
+                        }}>Selengkapnya</Text>
+                        <Icon type='ionicon' name='open-outline' color={colors.secondary} size={windowWidth / 30} />
+                    </TouchableOpacity>
                 </View>
+
+
+
+
+
             </TouchableOpacity>
 
 
@@ -216,12 +114,12 @@ export default function ({ navigation }) {
                 }}>
                     <Text style={{
                         fontFamily: fonts.primary[600],
-                        fontSize: windowWidth / 22,
+                        fontSize: windowWidth / 25,
                         textAlign: 'left',
                         color: colors.primary,
                         right: 5,
                     }}>Selanjutnya</Text>
-                    <Icon type='ionicon' name='arrow-forward-outline' color={colors.primary} size={windowWidth / 22} />
+                    <Icon type='ionicon' name='arrow-forward-outline' color={colors.primary} size={windowWidth / 25} />
                 </TouchableOpacity>
             </View>
 

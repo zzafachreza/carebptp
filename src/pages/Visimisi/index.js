@@ -18,7 +18,7 @@ import { PermissionsAndroid } from 'react-native';
 import LottieView from 'lottie-react-native';
 import axios from 'axios';
 import { Icon } from 'react-native-elements';
-
+import WebView from 'react-native-webview';
 export default function Visimisi({ navigation }) {
     const Panjang = new Animated.Value(0);
     const [buka, setBuka] = useState(false);
@@ -42,7 +42,7 @@ export default function Visimisi({ navigation }) {
     }, []);
 
     return (
-        <ImageBackground source={require('../../assets/back.png')} style={{
+        <ImageBackground source={require('../../assets/care1.png')} style={{
             // paddingHorizontal: 10,
             flex: 1,
 
@@ -65,37 +65,18 @@ export default function Visimisi({ navigation }) {
                 flex: 1,
                 padding: 10,
             }}>
-                <View style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: 10,
 
-                }}>
-                    <Image source={require('../../assets/logo_utama.png')} style={{
-                        width: 100,
-                        height: 100,
-                    }} />
-                </View>
                 <View style={{
-                    padding: 10,
+                    padding: windowWidth / 50,
+                    // backgroundColor: 'red'
                 }}>
 
-                    <Text style={{
-                        marginTop: 10,
-                        fontFamily: fonts.primary[600],
-                        fontSize: windowWidth / 20,
-                        color: colors.black
-                    }}>Pengertian</Text>
-                    <Text style={{
-                        fontFamily: fonts.primary[400],
-                        fontSize: windowWidth / 25,
-                        textAlign: 'justify',
-                        color: colors.black
-                    }}>CARE   (Collaboration Attitude Responsibility Existence) BPTP Sulawesi Tengah merupakan sistem  aplikasi pelayanan publik BPTP   Sulawesi   Tengah    berbasis online untuk  memberikan   pelayanan  dengan  cara  cepat,  tepat,  akurat, serta  mudah. Layanan publik ini terdiri dari delapan jenis layanan
-                    </Text>
+
+
 
 
                 </View>
+
             </TouchableOpacity>
             <View style={{
                 justifyContent: 'center',
@@ -112,12 +93,12 @@ export default function Visimisi({ navigation }) {
                 }}>
                     <Text style={{
                         fontFamily: fonts.primary[600],
-                        fontSize: windowWidth / 22,
+                        fontSize: windowWidth / 25,
                         textAlign: 'left',
                         color: colors.primary,
                         right: 5,
                     }}>Selanjutnya</Text>
-                    <Icon type='ionicon' name='arrow-forward-outline' color={colors.primary} size={windowWidth / 22} />
+                    <Icon type='ionicon' name='arrow-forward-outline' color={colors.primary} size={windowWidth / 25} />
                 </TouchableOpacity>
             </View>
 

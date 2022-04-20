@@ -17,12 +17,15 @@ import LottieView from 'lottie-react-native';
 import axios from 'axios';
 import { storeData, getData } from '../../utils/localStorage';
 import { showMessage } from 'react-native-flash-message';
+import CheckBox from '@react-native-community/checkbox';
 
 export default function Login({ navigation }) {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
   const [loading, setLoading] = useState(false);
   const [valid, setValid] = useState(true);
+
+  const [toggleCheckBox, setToggleCheckBox] = useState(false)
 
   const [token, setToken] = useState('');
   const [data, setData] = useState({
@@ -146,7 +149,21 @@ export default function Login({ navigation }) {
               })
             }
           />
-          <MyGap jarak={40} />
+
+          <View style={{
+
+            paddingVertical: 10,
+          }}>
+
+            <Text style={{
+              fontFamily: fonts.secondary[400],
+              fontSize: windowWidth / 25,
+              color: colors.black,
+            }}>Kami berkomitmen untuk menjaga privasi semua pengguna aplikasi CARE BPTP.</Text>
+
+          </View>
+
+          <MyGap jarak={20} />
           {valid && (
             <MyButton
               warna={colors.primary}

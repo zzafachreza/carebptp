@@ -242,6 +242,10 @@ export default function ({ navigation }) {
                             value: 'Peternakan',
                         },
                         {
+                            label: 'Nutrisi Pakan dan Ternak IP2TP',
+                            label: 'Nutrisi Pakan dan Ternak IP2TP',
+                        },
+                        {
                             label: 'Teknologi Pasca Panen',
                             value: 'Teknologi Pasca Panen',
                         },

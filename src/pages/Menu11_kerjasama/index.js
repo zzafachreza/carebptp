@@ -189,7 +189,7 @@ export default function ({ navigation }) {
                     fontFamily: fonts.secondary[600],
                     fontSize: windowWidth / 17,
                     marginVertical: 10,
-                }}>Layanan Kerjasama Penelitian</Text>
+                }}>Layanan Kerjasama</Text>
 
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama' iconname='create-outline' />
                 <MyInput value={data.email} onChangeText={x => setData({ ...data, email: x, })} label='Email' iconname='create-outline' />

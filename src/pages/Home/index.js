@@ -91,7 +91,7 @@ export default function Home({ navigation }) {
             type="ionicon"
             name={icon}
             color={colors.white}
-            size={windowWidth / 5}
+            size={windowWidth / 6}
           />
         </View>
         <View>
@@ -139,22 +139,20 @@ export default function Home({ navigation }) {
         <View
           style={{
             height: windowHeight / 9,
-            padding: 10,
+            padding: 5,
             marginBottom: 5,
             backgroundColor: colors.white,
             flexDirection: 'row',
-            // borderBottomLeftRadius: 10,
-            // borderBottomRightRadius: 10,
           }}>
 
           <View style={{ flex: 1, paddingTop: 10, flexDirection: 'row' }}>
-            <View style={{ paddingLeft: 10, flex: 1 }}>
+            <View style={{ paddingLeft: 10, flex: 2, }}>
 
               <Text
                 style={{
                   fontSize: windowWidth / 30,
-                  color: colors.border,
-                  fontFamily: fonts.secondary[600],
+                  color: colors.black,
+                  fontFamily: fonts.secondary[400],
                 }}>
                 Selamat datang, <Text
                   style={{
@@ -170,21 +168,21 @@ export default function Home({ navigation }) {
               <Text
                 style={{
 
-                  fontSize: windowWidth / 20,
+                  fontSize: windowWidth / 25,
                   color: colors.primary,
                   fontFamily: fonts.secondary[800],
                 }}>
-                CARE BPTP
-              </Text>
-              <Text
-                style={{
+                CARE BPTP  <Text
+                  style={{
 
-                  fontSize: windowWidth / 25,
-                  color: colors.secondary,
-                  fontFamily: fonts.secondary[600],
-                }}>
-                Sulawesi Tengah
+                    fontSize: windowWidth / 25,
+                    color: colors.secondary,
+                    fontFamily: fonts.secondary[600],
+                  }}>
+                  Sulawesi Tengah
+                </Text>
               </Text>
+
 
 
             </View>
@@ -196,7 +194,7 @@ export default function Home({ navigation }) {
               }}>
               <Image
                 source={require('../../assets/logo_utama.png')}
-                style={{ width: 70, height: 70 }}
+                style={{ width: windowWidth / 7, height: windowWidth / 7 }}
               />
             </View>
 
@@ -321,14 +319,14 @@ export default function Home({ navigation }) {
             onPress={() => navigation.navigate('Menu10_radio')}
             icon="radio-outline"
             nama="Layanan"
-            nama2="Radio"
+            nama2="Radio RCP-SIGI"
           />
           <DataKategori
             warna={colors.primary}
             onPress={() => navigation.navigate('Menu11_kerjasama')}
             icon="search-outline"
             nama="Layanan"
-            nama2="Kerjasama Penelitian"
+            nama2="Kerjasama"
           />
         </View>
 

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Linking, TouchableOpacity } from 'react-native';
 import { MyPicker, MyGap, MyInput, MyButton } from '../../components';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { colors } from '../../utils/colors';
-import { fonts, windowWidth } from '../../utils/fonts';
+import { fonts, windowHeight, windowWidth } from '../../utils/fonts';
 import { Image } from 'react-native';
 import { getData } from '../../utils/localStorage';
 import axios from 'axios';
@@ -17,6 +17,7 @@ import DocumentPicker, {
     isInProgress,
     types,
 } from 'react-native-document-picker'
+import { Icon } from 'react-native-elements';
 export default function ({ navigation }) {
 
 
@@ -251,8 +252,31 @@ export default function ({ navigation }) {
                     fontFamily: fonts.secondary[600],
                     fontSize: windowWidth / 17,
                     marginVertical: 10,
-                }}>Layanan Radio</Text>
+                }}>Layanan Radio RCP-SIGI</Text>
 
+                <View style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: 10,
+
+                }}>
+                    <TouchableOpacity onPress={() => Linking.openURL('http://rcpsulteng.caster.fm/')} style={{
+                        backgroundColor: colors.secondary,
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: 10,
+                        borderRadius: 10,
+
+                    }}>
+                        <Text style={{
+                            fontFamily: fonts.primary[400],
+                            fontSize: windowWidth / 25,
+                            color: colors.white,
+                        }}>klik disini untuk mendengarkan streaming kami</Text>
+                        <Icon type='ionicon' name='wifi-outline' color={colors.white} size={windowWidth / 25} />
+                    </TouchableOpacity>
+                </View>
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama' iconname='create-outline' />
                 <MyInput value={data.instansi} onChangeText={x => setData({ ...data, instansi: x, })} label='Nama Instansi' iconname='create-outline' />
 
@@ -438,7 +462,7 @@ export default function ({ navigation }) {
  */}
 
 
-                <MyInput value={data.jenis_layanan} multiline onChangeText={x => setData({ ...data, jenis_layanan: x, })} label='Layanan Publikasi dan Desiminasi' label2="(Naskah Siaran Radio)" iconname='create-outline' />
+                <MyInput value={data.jenis_layanan} multiline onChangeText={x => setData({ ...data, jenis_layanan: x, })} label='Layanan Publikasi dan Diseminasi' label2="(Naskah Siaran Radio)" iconname='create-outline' />
 
 
 

@@ -58,9 +58,11 @@ export default function MyPicker({
           {label2}
         </Text>
       )}
-      <Picker selectedValue={value} onValueChange={onValueChange}>
+      <Picker multiline={true}
+        numberOfLines={2} selectedValue={value} onValueChange={onValueChange}>
         {data.map(item => {
-          return <Picker.Item value={item.value} label={item.label} />;
+          return <Picker.Item multiline={true}
+            numberOfLines={2} value={item.value} label={item.label} />;
         })}
       </Picker>
     </View>

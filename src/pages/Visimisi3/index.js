@@ -42,7 +42,7 @@ export default function ({ navigation }) {
     }, []);
 
     return (
-        <ImageBackground source={require('../../assets/back.png')} style={{
+        <ImageBackground source={require('../../assets/care3.png')} style={{
             // paddingHorizontal: 10,
             flex: 1,
 
@@ -65,43 +65,8 @@ export default function ({ navigation }) {
                 flex: 1,
                 padding: 10,
             }}>
-                <View style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: 10,
 
-                }}>
-                    <Image source={require('../../assets/logo_utama.png')} style={{
-                        width: 100,
-                        height: 100,
-                    }} />
-                </View>
-                <View style={{
-                    padding: 10
-                }}>
-                    {/*  */}
-                    <Text style={{
-                        marginTop: 10,
-                        fontFamily: fonts.primary[600],
-                        fontSize: windowWidth / 20,
-                        color: colors.black
-                    }}>Strategi Utama</Text>
-                    <Text style={{
-                        fontFamily: fonts.primary[400],
-                        fontSize: windowWidth / 25,
-                        textAlign: 'justify',
-                        color: colors.black
-                    }}>Memfasilitasi terwujudnya upaya peningkatan kapasitas dan kreativitas semua komponen yang ada di BPTP Sulawesi Tengah dalam menghasilkan dan mengembangkan inovasi teknologi spesifik lokasi.
-                    </Text>
-                    <Text style={{
-                        fontFamily: fonts.primary[400],
-                        fontSize: windowWidth / 25,
-                        textAlign: 'justify',
-                        color: colors.black
-                    }}>Membangun dan menjembatani aliansi strategis antara pengguna di Sulawesi Tengah dengan Balai Komoditas/Puslitbang/Puslit/Balai Besar/LRPI serta berbagai Lembaga penelitian dari dalam dan luar negeri.
-                    </Text>
-                    {/*  */}
-                </View>
+
             </TouchableOpacity>
             <View style={{
                 justifyContent: 'center',
@@ -118,12 +83,12 @@ export default function ({ navigation }) {
                 }}>
                     <Text style={{
                         fontFamily: fonts.primary[600],
-                        fontSize: windowWidth / 22,
+                        fontSize: windowWidth / 25,
                         textAlign: 'left',
                         color: colors.primary,
                         right: 5,
                     }}>Selanjutnya</Text>
-                    <Icon type='ionicon' name='arrow-forward-outline' color={colors.primary} size={windowWidth / 22} />
+                    <Icon type='ionicon' name='arrow-forward-outline' color={colors.primary} size={windowWidth / 25} />
                 </TouchableOpacity>
             </View>
 

@@ -210,7 +210,7 @@ export default function ({ navigation }) {
                     fontFamily: fonts.secondary[600],
                     fontSize: windowWidth / 17,
                     marginVertical: 10,
-                }}>Unit Pengelola Benih Sumber</Text>
+                }}>Unit Pengelola Benih Sumber ( UPBS )</Text>
 
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama' iconname='create-outline' />
                 <MyInput value={data.telepon} keyboardType="number-pad" onChangeText={x => setData({ ...data, telepon: x, })} label='No Whatsapp' iconname='create-outline' />
@@ -261,8 +261,12 @@ export default function ({ navigation }) {
 
                     }
                     iconname="list"
-                    label="Jenis Tanaman"
+                    label="Layanan Diseminasi UPBS"
                     data={[
+                        {
+                            label: '',
+                            value: '',
+                        },
                         {
                             label: 'Padi',
                             value: 'Padi',
@@ -273,77 +277,91 @@ export default function ({ navigation }) {
                             value: 'Jagung',
                         },
 
-                        {
-                            label: 'Kedelai',
-                            value: 'Kedelai',
-                        },
+
                     ]}
                 />
 
-                <MyPicker
-                    onValueChange={x =>
+                {data.jenis_tanaman == "Padi" && (
+                    <MyPicker
+                        onValueChange={x =>
 
-                        setData({
-                            ...data,
-                            tanaman_padi: x,
-                        })
-
-
-                    }
-                    iconname="list"
-                    label="Varietas Tanaman Padi"
-                    data={[
-                        {
-                            label: 'Inpari 43',
-                            value: 'Inpari 43',
-                        },
-
-                        {
-                            label: 'Inpari 40',
-                            value: 'Inpari 40',
-                        },
-
-                        {
-                            label: 'Inpago 12',
-                            value: 'Inpago 12',
-                        },
-                    ]}
-                />
-
-                <MyPicker
-                    onValueChange={x => {
-
-
-                        if (x == 'Lainnya') {
-                            setBuka1(true);
                             setData({
                                 ...data,
-                                tanaman_jagung: '',
+                                tanaman_padi: x,
                             })
-                        } else {
-                            setBuka1(false);
-                            setData({
-                                ...data,
-                                tanaman_jagung: x,
-                            })
+
+
                         }
-                    }
-                    }
-                    iconname="list"
-                    label="Varietas Tanaman Jagung"
-                    data={[
-                        {
-                            label: 'Varietas Lamuru',
-                            value: 'Varietas Lamuru',
-                        },
+                        iconname="list"
+                        label="Perbenihan Padi"
+                        data={[
+                            {
+                                label: 'Inpari 36',
+                                value: 'Inpari 36',
+                            },
+                            {
+                                label: 'Situbagendit',
+                                value: 'Situbagendit',
+                            },
+
+                            {
+                                label: 'Inpari 43',
+                                value: 'Inpari 43',
+                            },
+
+                            {
+                                label: 'Inpari 42',
+                                value: 'Inpari 42',
+                            },
+                        ]}
+                    />
+                )}
+
+                {data.jenis_tanaman == "Jagung" && (
+                    <MyPicker
+                        onValueChange={x => {
 
 
-                        {
-                            label: 'Lainnya',
-                            value: 'Lainnya',
-                        },
-                    ]}
-                />
+                            if (x == 'Lainnya') {
+                                setBuka1(true);
+                                setData({
+                                    ...data,
+                                    tanaman_jagung: '',
+                                })
+                            } else {
+                                setBuka1(false);
+                                setData({
+                                    ...data,
+                                    tanaman_jagung: x,
+                                })
+                            }
+                        }
+                        }
+                        iconname="list"
+                        label="Perbenihan Jagung"
+                        data={[
+                            {
+                                label: 'Jakarin 8000',
+                                value: 'Jakarin 8000',
+                            },
+                            {
+                                label: 'JH 37 (gratis untuk diseminasi, dibutuhkan menyurat ke kantor)',
+                                value: 'JH 37',
+                            },
+                            {
+                                label: 'Nasa 29 (gratis untuk diseminasi, dibutuhkan menyurat ke kantor)',
+                                value: 'Nasa 29',
+                            },
+
+
+                            {
+                                label: 'Lainnya',
+                                value: 'Lainnya',
+                            },
+                        ]}
+                    />
+
+                )}
                 {buka1 && <MyInput value={data.tanaman_jagung} onChangeText={x => setData({ ...data, tanaman_jagung: x, })} label='Lainnya : ' iconname='create-outline' />}
 
 

@@ -38,6 +38,8 @@ export default function MyCarouser({ jenis = 1 }) {
 
         if (item.id == 32) {
           Linking.openURL('https://www.litbang.pertanian.go.id/hasil/600');
+        } else if (item.id == 33) {
+          Linking.openURL('http://repository.pertanian.go.id/handle/123456789/15131');
         }
       }
     }}>
@@ -64,7 +66,7 @@ export default function MyCarouser({ jenis = 1 }) {
         containerCustomStyle={styles.carousel}
         renderItem={renderCarouselItem}
         sliderWidth={Dimensions.get('window').width}
-        itemWidth={300}
+        itemWidth={windowWidth - 100}
         removeClippedSubviews={false}
       />
     </View>
@@ -85,9 +87,7 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     backgroundColor: colors.black,
-    opacity: 1,
     height: 250,
-    width: 300,
     borderRadius: 10,
     // overflow: 'hidden',
   },

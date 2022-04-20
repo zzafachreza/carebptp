@@ -191,7 +191,7 @@ export default function ({ navigation }) {
                     fontFamily: fonts.secondary[600],
                     fontSize: windowWidth / 17,
                     marginVertical: 10,
-                }}>Instalasi Penelitian dan Pengkajian Teknologi Pertanian</Text>
+                }}>Instalasi Penelitian dan Pengkajian Teknologi Pertanian ( IP2TP )</Text>
 
                 <MyInput value={data.nama} onChangeText={x => setData({ ...data, nama: x, })} label='Nama' iconname='create-outline' />
                 <MyInput value={data.instansi} onChangeText={x => setData({ ...data, instansi: x, })} label='Instansi' iconname='create-outline' />
