@@ -154,7 +154,7 @@ export default function ({ navigation }) {
         if (data.nama.length === 0) { showMessage({ message: 'Maaf nama masih kosong !' }); }
         else if (data.email.length === 0) { showMessage({ message: 'Maaf email masih kosong !' }); }
         else if (data.telepon.length === 0) { showMessage({ message: 'Maaf telepon masih kosong !' }); }
-        else if (data.jenis_layanan.length === 0) { showMessage({ message: 'Maaf jenis_layanan masih kosong !' }); }
+        else if (data.jenis_layanan.length === 0) { showMessage({ message: 'Maaf jenis layanan masih kosong !' }); }
         else {
             setLoading(true);
             console.log('kirim ke server : ', data)
@@ -215,7 +215,13 @@ export default function ({ navigation }) {
                     }
                     iconname="list"
                     label="Jenis Layanan"
+                    value={data.jenis_layanan}
                     data={[
+
+                        {
+                            label: '',
+                            value: '',
+                        },
 
 
                         {

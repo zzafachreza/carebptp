@@ -233,7 +233,13 @@ export default function ({ navigation }) {
                     }
                     iconname="list"
                     label="Jenis Layanan"
+                    value={data.jenis_layanan}
                     data={[
+
+                        {
+                            label: '',
+                            value: '',
+                        },
                         {
                             label: 'Layanan Sirkulasi',
                             value: 'Layanan Sirkulasi',

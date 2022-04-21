@@ -155,10 +155,10 @@ export default function ({ navigation }) {
 
         if (data.nama.length === 0) { showMessage({ message: 'Maaf nama masih kosong !' }); }
         else if (data.sekolah.length === 0) { showMessage({ message: 'Maaf sekolah masih kosong !' }); }
-        else if (data.alamat_sekolah.length === 0) { showMessage({ message: 'Maaf alamat_sekolah masih kosong !' }); }
+        else if (data.alamat_sekolah.length === 0) { showMessage({ message: 'Maaf alamat sekolah masih kosong !' }); }
         else if (data.telepon.length === 0) { showMessage({ message: 'Maaf telepon masih kosong !' }); }
         else if (data.email.length === 0) { showMessage({ message: 'Maaf email masih kosong !' }); }
-        else if (data.waktu_pelaksanaan.length === 0) { showMessage({ message: 'Maaf waktu_pelaksanaan masih kosong !' }); }
+        else if (data.waktu_pelaksanaan.length === 0) { showMessage({ message: 'Maaf waktu pelaksanaan masih kosong !' }); }
         else if (data.materi.length === 0) { showMessage({ message: 'Maaf materi masih kosong !' }); }
         else if (data.foto.length === 0) { showMessage({ message: 'Maaf foto masih kosong !' }); }
         else {

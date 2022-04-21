@@ -211,6 +211,7 @@ export default function ({ navigation }) {
                 <MyInput value={data.alamat} onChangeText={x => setData({ ...data, alamat: x, })} label='Alamat' iconname='create-outline' />
 
                 <MyPicker
+                    value={data.info_dibutuhkan}
                     onValueChange={x => {
 
                         if (x == 'Lainnya') {
@@ -233,6 +234,11 @@ export default function ({ navigation }) {
                     iconname="list"
                     label="Informasi Yang Dibutuhkan"
                     data={[
+
+                        {
+                            label: '',
+                            value: '',
+                        },
                         {
                             label: 'Budidaya Tanaman',
                             value: 'Budidaya Tanaman',
@@ -241,28 +247,35 @@ export default function ({ navigation }) {
                             label: 'Peternakan',
                             value: 'Peternakan',
                         },
+
                         {
                             label: 'Nutrisi Pakan dan Ternak IP2TP',
-                            label: 'Nutrisi Pakan dan Ternak IP2TP',
-                        },
-                        {
-                            label: 'Teknologi Pasca Panen',
-                            value: 'Teknologi Pasca Panen',
+                            value: 'Nutrisi Pakan dan Ternak IP2TP',
                         },
                         {
                             label: 'Sosial Ekonomi Pertanian',
                             value: 'Sosial Ekonomi Pertanian',
+                        }, {
+                            label: 'Teknologi Pasca Panen',
+                            label: 'Teknologi Pasca Panen',
                         },
+
+
                         {
                             label: 'Lainnya',
                             value: 'Lainnya',
                         },
+
+
+
+
                     ]}
                 />
 
                 {buka1 && <MyInput value={data.info_dibutuhkan} onChangeText={x => setData({ ...data, info_dibutuhkan: x, })} label='Lainnya : ' iconname='create-outline' />}
 
                 <MyPicker
+                    value={data.pengguna_informasi}
                     onValueChange={x => {
 
 
@@ -284,6 +297,10 @@ export default function ({ navigation }) {
                     iconname="list"
                     label="Pengguna Informasi"
                     data={[
+                        {
+                            label: '',
+                            value: '',
+                        },
                         {
                             label: 'Penelitian',
                             value: 'Penelitian',
@@ -316,6 +333,7 @@ export default function ({ navigation }) {
                 {buka2 && <MyInput value={data.pengguna_informasi} onChangeText={x => setData({ ...data, pengguna_informasi: x, })} label='Lainnya : ' iconname='create-outline' />}
 
                 <MyPicker
+                    value={data.jenis_dokumen}
                     onValueChange={x => {
 
 
@@ -337,6 +355,10 @@ export default function ({ navigation }) {
                     iconname="list"
                     label="Jenis dokumen yang diinginkan"
                     data={[
+                        {
+                            label: '',
+                            value: '',
+                        },
                         {
                             label: 'Artikel Majalah',
                             value: 'Artikel Majalah',

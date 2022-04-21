@@ -257,7 +257,7 @@ export default function Cart({ navigation, route }) {
                 alamat: alamat
               }).then(rr => {
                 console.log(rr.data)
-                Linking.openURL('https://api.whatsapp.com/send?phone=6281319456595&text=' + rr.data);
+                Linking.openURL(rr.data);
               })
 
 

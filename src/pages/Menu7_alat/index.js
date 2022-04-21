@@ -161,9 +161,9 @@ export default function ({ navigation }) {
         // setLoading(true);
         console.log('kirim to server', data);
 
-        if (data.pernah_membeli.length === 0) { showMessage({ message: 'Maaf pernah_membeli masih kosong !' }); }
-        else if (data.item_pinjam.length === 0) { showMessage({ message: 'Maaf item_pinjam masih kosong !' }); }
-        else if (data.opsi_produk.length === 0) { showMessage({ message: 'Maaf opsi_produk masih kosong !' }); }
+        if (data.pernah_membeli.length === 0) { showMessage({ message: 'Maaf info pernah membeli masih kosong !' }); }
+        else if (data.item_pinjam.length === 0) { showMessage({ message: 'Maaf item pinjam masih kosong !' }); }
+        else if (data.opsi_produk.length === 0) { showMessage({ message: 'Maaf opsi produk masih kosong !' }); }
         else if (data.nama.length === 0) { showMessage({ message: 'Maaf nama masih kosong !' }); }
         else if (data.telepon.length === 0) { showMessage({ message: 'Maaf telepon masih kosong !' }); }
         else if (data.email.length === 0) { showMessage({ message: 'Maaf email masih kosong !' }); }
@@ -217,7 +217,13 @@ export default function ({ navigation }) {
                     }
                     iconname="list"
                     label="Apakah Anda pelanggan baru atau pernah meminjam sebelumnya?"
+                    value={data.pernah_membeli}
                     data={[
+
+                        {
+                            label: '',
+                            value: '',
+                        },
                         {
                             label: 'Saya peminjam baru',
                             value: 'Saya peminjam baru',
@@ -248,6 +254,11 @@ export default function ({ navigation }) {
                     iconname="list"
                     label="Produk apa yang ingin anda pinjam ?"
                     data={[
+
+                        {
+                            label: '',
+                            value: '',
+                        },
                         {
                             label: 'Traktor roda empat mini iseki',
                             value: 'Traktor roda empat mini iseki',

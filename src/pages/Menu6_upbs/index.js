@@ -167,14 +167,14 @@ export default function ({ navigation }) {
         else if (data.email.length === 0) { showMessage({ message: 'Maaf email masih kosong !' }); }
         else if (data.alamat.length === 0) { showMessage({ message: 'Maaf alamat masih kosong !' }); }
         else if (data.agroekosistem.length === 0) { showMessage({ message: 'Maaf agroekosistem masih kosong !' }); }
-        else if (data.luas_tanah.length === 0) { showMessage({ message: 'Maaf luas_tanah masih kosong !' }); }
-        else if (data.jenis_tanaman.length === 0) { showMessage({ message: 'Maaf jenis_tanaman masih kosong !' }); }
-        else if (data.tanaman_padi.length === 0) { showMessage({ message: 'Maaf tanaman_padi masih kosong !' }); }
-        else if (data.tanaman_jagung.length === 0) { showMessage({ message: 'Maaf tanaman_jagung masih kosong !' }); }
-        else if (data.kelas_benih.length === 0) { showMessage({ message: 'Maaf kelas_benih masih kosong !' }); }
+        else if (data.luas_tanah.length === 0) { showMessage({ message: 'Maaf luas tanah masih kosong !' }); }
+        else if (data.jenis_tanaman.length === 0) { showMessage({ message: 'Maaf jenis tanaman masih kosong !' }); }
+        else if (data.tanaman_padi.length === 0) { showMessage({ message: 'Maaf tanaman padi masih kosong !' }); }
+        else if (data.tanaman_jagung.length === 0) { showMessage({ message: 'Maaf tanaman jagung masih kosong !' }); }
+        else if (data.kelas_benih.length === 0) { showMessage({ message: 'Maaf kelas benih masih kosong !' }); }
         else if (data.kebutuhan_benih.length === 0) { showMessage({ message: 'Maaf kebutuhan_benih masih kosong !' }); }
-        else if (data.waktu_dibutuhkan.length === 0) { showMessage({ message: 'Maaf waktu_dibutuhkan masih kosong !' }); }
-        else if (data.transaksi_pembayaran.length === 0) { showMessage({ message: 'Maaf transaksi_pembayaran masih kosong !' }); }
+        else if (data.waktu_dibutuhkan.length === 0) { showMessage({ message: 'Maaf waktu yang dibutuhkan masih kosong !' }); }
+        else if (data.transaksi_pembayaran.length === 0) { showMessage({ message: 'Maaf transaksi pembayaran masih kosong !' }); }
         else if (data.komentar.length === 0) { showMessage({ message: 'Maaf komentar masih kosong !' }); }
         else {
             setLoading(true);
@@ -229,7 +229,13 @@ export default function ({ navigation }) {
                     }
                     iconname="list"
                     label="Agroekosistem"
+                    value={data.agroekosistem}
                     data={[
+
+                        {
+                            label: '',
+                            value: '',
+                        },
                         {
                             label: 'Lahan Sawah',
                             value: 'Lahan Sawah',
@@ -262,7 +268,10 @@ export default function ({ navigation }) {
                     }
                     iconname="list"
                     label="Layanan Diseminasi UPBS"
+                    value={data.jenis_tanaman}
                     data={[
+
+
                         {
                             label: '',
                             value: '',
@@ -294,7 +303,13 @@ export default function ({ navigation }) {
                         }
                         iconname="list"
                         label="Perbenihan Padi"
+                        value={data.tanaman_padi}
                         data={[
+
+                            {
+                                label: '',
+                                value: '',
+                            },
                             {
                                 label: 'Inpari 36',
                                 value: 'Inpari 36',
@@ -339,7 +354,13 @@ export default function ({ navigation }) {
                         }
                         iconname="list"
                         label="Perbenihan Jagung"
+                        value={data.tanaman_jagung}
                         data={[
+
+                            {
+                                label: '',
+                                value: '',
+                            },
                             {
                                 label: 'Jakarin 8000',
                                 value: 'Jakarin 8000',
@@ -377,7 +398,13 @@ export default function ({ navigation }) {
                     }
                     iconname="list"
                     label="Kelas Benih"
+                    value={data.kelas_benih}
                     data={[
+
+                        {
+                            label: '',
+                            value: '',
+                        },
                         {
                             label: 'Benih Dasar (Label Putih)',
                             value: 'Benih Dasar (Label Putih)',
@@ -408,7 +435,13 @@ export default function ({ navigation }) {
                     }
                     iconname="list"
                     label="Kebutuhan Benih"
+                    value={data.kebutuhan_benih}
                     data={[
+
+                        {
+                            label: '',
+                            value: '',
+                        },
                         {
                             label: '5 kg',
                             value: '5 kg',
@@ -441,7 +474,13 @@ export default function ({ navigation }) {
                     }
                     iconname="list"
                     label="Transaksi Pembayaran"
+                    value={data.transaksi_pembayaran}
                     data={[
+
+                        {
+                            label: '',
+                            value: '',
+                        },
                         {
                             label: 'Tunai/Cash',
                             value: 'Tunai/Cash',

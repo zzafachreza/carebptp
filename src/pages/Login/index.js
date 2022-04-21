@@ -11,7 +11,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { colors } from '../../utils/colors';
-import { fonts } from '../../utils/fonts';
+import { fonts, windowWidth } from '../../utils/fonts';
 import { MyInput, MyGap, MyButton } from '../../components';
 import LottieView from 'lottie-react-native';
 import axios from 'axios';
@@ -125,7 +125,7 @@ export default function Login({ navigation }) {
             Silahkan Masukan Nama dan Profesi untuk masuk ke aplikasi
           </Text>
 
-          <MyGap jarak={20} />
+          <MyGap jarak={10} />
           <MyInput
             label="Masukan Nama"
             iconname="person"
@@ -152,7 +152,7 @@ export default function Login({ navigation }) {
 
           <View style={{
 
-            paddingVertical: 10,
+            paddingVertical: 5,
           }}>
 
             <Text style={{
@@ -163,7 +163,7 @@ export default function Login({ navigation }) {
 
           </View>
 
-          <MyGap jarak={20} />
+          <MyGap jarak={10} />
           {valid && (
             <MyButton
               warna={colors.primary}
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   page: {
     flex: 1,
     // backgroundColor: colors.white,
-    padding: 10,
+    padding: windowWidth / 25,
   },
   image: {
     aspectRatio: 1.5,

@@ -174,10 +174,10 @@ export default function ({ navigation }) {
         // console.log('kirim to server', data);
         if (data.nama.length === 0) { showMessage({ message: 'Maaf nama masih kosong !' }); }
         else if (data.instansi.length === 0) { showMessage({ message: 'Maaf instansi masih kosong !' }); }
-        else if (data.jenis_instansi.length === 0) { showMessage({ message: 'Maaf jenis_instansi masih kosong !' }); }
+        else if (data.jenis_instansi.length === 0) { showMessage({ message: 'Maaf jenis instansi masih kosong !' }); }
         else if (data.alamat.length === 0) { showMessage({ message: 'Maaf alamat masih kosong !' }); }
         else if (data.email.length === 0) { showMessage({ message: 'Maaf email masih kosong !' }); }
-        else if (data.jenis_layanan.length === 0) { showMessage({ message: 'Maaf jenis_layanan masih kosong !' }); }
+        else if (data.jenis_layanan.length === 0) { showMessage({ message: 'Maaf jenis layanan masih kosong !' }); }
         else if (data.telepon.length === 0) { showMessage({ message: 'Maaf telepon masih kosong !' }); }
         // else if (data.jenis_iklan.length === 0) { showMessage({ message: 'Maaf jenis_iklan masih kosong !' }); }
         // else if (data.iklan_konmersial.length === 0) { showMessage({ message: 'Maaf iklan_konmersial masih kosong !' }); }
@@ -301,7 +301,13 @@ export default function ({ navigation }) {
                     }
                     iconname="list"
                     label="Jenis Instansi"
+                    value={data.jenis_instansi}
                     data={[
+
+                        {
+                            label: '',
+                            value: '',
+                        },
                         {
                             label: 'Perusahaan / Biro Iklan',
                             value: 'Perusahaan / Biro Iklan',

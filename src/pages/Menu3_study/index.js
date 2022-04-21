@@ -155,13 +155,13 @@ export default function ({ navigation }) {
         console.log('kirim to server', data);
 
         if (data.email.length === 0) { showMessage({ message: 'Maaf email masih kosong !' }); }
-        else if (data.nama_group.length === 0) { showMessage({ message: 'Maaf nama_group masih kosong !' }); }
+        else if (data.nama_group.length === 0) { showMessage({ message: 'Maaf nama group/instansi masih kosong !' }); }
         else if (data.instansi.length === 0) { showMessage({ message: 'Maaf instansi masih kosong !' }); }
         else if (data.alamat.length === 0) { showMessage({ message: 'Maaf alamat masih kosong !' }); }
         else if (data.telepon.length === 0) { showMessage({ message: 'Maaf telepon masih kosong !' }); }
         else if (data.materi_teknologi.length === 0) { showMessage({ message: 'Maaf tujuan masih kosong !' }); }
         else if (data.tujuan.length === 0) { showMessage({ message: 'Maaf tujuan masih kosong !' }); }
-        else if (data.jumlah_peserta.length === 0) { showMessage({ message: 'Maaf jumlah_peserta masih kosong !' }); }
+        else if (data.jumlah_peserta.length === 0) { showMessage({ message: 'Maaf jumlah peserta masih kosong !' }); }
         else if (data.foto.length === 0) { showMessage({ message: 'Maaf foto masih kosong !' }); }
         else {
             setLoading(true);
@@ -228,7 +228,13 @@ export default function ({ navigation }) {
                     }
                     iconname="list"
                     label="Tujuan"
+                    value={data.tujuan}
                     data={[
+
+                        {
+                            label: '',
+                            value: '',
+                        },
                         {
                             label: 'Studi Banding',
                             value: 'Studi Banding',
