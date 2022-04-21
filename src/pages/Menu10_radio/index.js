@@ -466,12 +466,42 @@ export default function ({ navigation }) {
 
 
 
+                <View style={{
+                    flexDirection: 'row',
+                    paddingVertical: 10,
+                }}>
+                    <TouchableOpacity onPress={() => Linking.openURL('https://carebptp.zavalabs.com/naskah-siaran.pdf')} style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: 10,
+                        backgroundColor: '#c0392b'
+                    }}>
+                        <Text style={{
+                            textAlign: 'center',
+                            color: colors.white
+                        }}>Download Contoh Naskah file PDF</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => Linking.openURL('https://carebptp.zavalabs.com/naskah-siaran.docx')} style={{
+                        flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: 10,
+                        backgroundColor: '#2980b9'
+                    }}>
+                        <Text style={{
+                            textAlign: 'center',
+                            color: colors.white
+                        }}>Download Contoh Naskah file WORD</Text>
+                    </TouchableOpacity>
+                </View>
 
 
 
-
-                <MyGap jarak={5} />
+                <MyGap jarak={20} />
                 <Text style={{ fontFamily: fonts.secondary[600], fontSize: 12, textAlign: 'center' }}>(Dokumen PDF maksimal 5 Mb)</Text>
+
+
                 <MyButton
                     warna={colors.danger}
                     title="Upload Dokumen PDF"
