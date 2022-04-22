@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
 import { MyPicker, MyGap, MyInput, MyButton } from '../../components';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
@@ -11,6 +11,8 @@ import axios from 'axios';
 import LottieView from 'lottie-react-native';
 import { showMessage } from 'react-native-flash-message';
 import MyCarouser from '../../components/MyCarouser';
+import Modal from "react-native-modal";
+
 export default function ({ navigation }) {
     const [data, setData] = useState({
         email: '',
@@ -24,6 +26,14 @@ export default function ({ navigation }) {
         foto: '',
 
     });
+    const [rating, setRating] = useState({
+        nama_layanan: 'Layanan Study banding dan Kunjungan Edukatif',
+        rating1: '',
+        rating2: '',
+        rating3: '',
+        nama_user: data.nama
+    })
+    const [vis, setVis] = useState(false);
     const [loading, setLoading] = useState(false);
     const [buka1, setBuka1] = useState(false);
     const [buka2, setBuka2] = useState(false);
@@ -154,6 +164,12 @@ export default function ({ navigation }) {
         // setLoading(true);
         console.log('kirim to server', data);
 
+        setRating({
+            ...rating,
+            nama_user: data.nama_group
+        })
+
+
         if (data.email.length === 0) { showMessage({ message: 'Maaf email masih kosong !' }); }
         else if (data.nama_group.length === 0) { showMessage({ message: 'Maaf nama group/instansi masih kosong !' }); }
         else if (data.instansi.length === 0) { showMessage({ message: 'Maaf instansi masih kosong !' }); }
@@ -177,19 +193,430 @@ export default function ({ navigation }) {
                         message: 'Data Kamu Berhasil Di Kirim'
                     })
 
-                    navigation.navigate('MainApp');
+                    setVis(true);
                 });
         }
 
 
     };
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flexGrow: 1 }}>
             <ScrollView
                 style={{
                     padding: 10,
+                    flex: 1
                 }}>
+                <Modal isVisible={vis}>
+                    <View style={{
+                        flex: 1,
+                        backgroundColor: colors.white,
+                        padding: 10
+                    }}>
+                        <View style={{
+                            justifyContent: 'center',
+                            alignItems: 'flex-end',
+                            marginBottom: 10,
+                        }}>
+                            <TouchableOpacity onPress={() => setVis(false)} style={{
+                                backgroundColor: colors.primary,
+                                width: 50,
+                                padding: 5,
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[600],
+                                    fontSize: windowWidth / 25,
+                                    color: colors.white
+                                }}>Close</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <Text style={{
+                            fontFamily: fonts.secondary[600],
+                            fontSize: windowWidth / 25,
+                            textAlign: 'center',
+                            borderBottomWidth: 1,
+                            paddingBottom: 10,
+                            borderBottomColor: '#CDCDCD'
+                        }}>{rating.nama_layanan}</Text>
+                        <MyGap jarak={10} />
+                        <Text style={{
+                            fontFamily: fonts.secondary[600],
+                            fontSize: windowWidth / 30,
+                            textAlign: 'center',
 
+                        }}>Mohon untuk mengisi survey kepuasan masyarakat  </Text>
+                        <MyGap jarak={10} />
+
+                        {/* Pertanyaan 1 */}
+                        <View style={{
+                            paddingVertical: 10,
+                        }}>
+                            <View style={{
+                                flexDirection: 'row'
+                            }}>
+                                <Text>1. </Text>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[600],
+                                    fontSize: windowWidth / 30,
+
+                                }}>Bagaimana Pendapat Saudara tentang persyaratan pelayanan dan jenis pelayanannya ?</Text>
+
+                            </View>
+                            <View style={{
+                                marginTop: 10,
+                                flexDirection: 'row',
+                                justifyContent: 'space-around'
+                            }}>
+
+                                <TouchableOpacity onPress={() =>
+                                    setRating({
+                                        ...rating,
+                                        rating1: 'Tidak sesuai'
+                                    })
+                                } style={{
+                                    width: windowWidth / 3,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    padding: 10,
+                                    borderWidth: 1,
+                                    borderColor: colors.primary,
+                                    backgroundColor: rating.rating1 == "Tidak sesuai" ? colors.primary : colors.white
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: windowWidth / 30,
+                                        color: rating.rating1 == "Tidak sesuai" ? colors.white : colors.primary
+
+                                    }}>Tidak sesuai</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() =>
+                                    setRating({
+                                        ...rating,
+                                        rating1: 'Sesuai'
+                                    })
+                                } style={{
+                                    width: windowWidth / 3,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    padding: 10,
+                                    borderWidth: 1,
+                                    borderColor: colors.primary,
+                                    backgroundColor: rating.rating1 == "Sesuai" ? colors.primary : colors.white
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: windowWidth / 30,
+                                        color: rating.rating1 == "Sesuai" ? colors.white : colors.primary
+                                    }}>Sesuai</Text>
+                                </TouchableOpacity>
+
+                            </View>
+
+                            <View style={{
+                                marginTop: 10,
+                                flexDirection: 'row',
+                                justifyContent: 'space-around'
+                            }}>
+
+                                <TouchableOpacity onPress={() =>
+                                    setRating({
+                                        ...rating,
+                                        rating1: 'Kurang sesuai'
+                                    })
+                                } style={{
+                                    width: windowWidth / 3,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    padding: 10,
+                                    borderWidth: 1,
+                                    borderColor: colors.primary,
+                                    backgroundColor: rating.rating1 == "Kurang sesuai" ? colors.primary : colors.white
+
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: windowWidth / 30,
+                                        color: rating.rating1 == "Kurang sesuai" ? colors.white : colors.primary
+
+                                    }}>Kurang sesuai</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() =>
+                                        setRating({
+                                            ...rating,
+                                            rating1: 'Sangat sesuai'
+                                        })
+                                    }
+                                    style={{
+                                        width: windowWidth / 3,
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        padding: 10,
+                                        borderWidth: 1,
+                                        borderColor: colors.primary,
+                                        backgroundColor: rating.rating1 == "Sangat sesuai" ? colors.primary : colors.white
+                                    }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: windowWidth / 30,
+                                        color: rating.rating1 == "Sangat sesuai" ? colors.white : colors.primary
+                                    }}>Sangat Sesuai</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        {/* pertanyaan 1 */}
+
+
+                        {/* Pertanyaan 2 */}
+                        <View style={{
+                            paddingVertical: 10,
+                        }}>
+                            <View style={{
+                                flexDirection: 'row'
+                            }}>
+                                <Text>2. </Text>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[600],
+                                    fontSize: windowWidth / 30,
+
+                                }}>Bagaimana Pemahaman Saudara tentang kemudahan prosedur pelayanan di unit ini ?</Text>
+
+                            </View>
+                            <View style={{
+                                marginTop: 10,
+                                flexDirection: 'row',
+                                justifyContent: 'space-around'
+                            }}>
+
+                                <TouchableOpacity onPress={() =>
+                                    setRating({
+                                        ...rating,
+                                        rating2: 'Tidak sesuai'
+                                    })
+                                } style={{
+                                    width: windowWidth / 3,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    padding: 10,
+                                    borderWidth: 1,
+                                    borderColor: colors.primary,
+                                    backgroundColor: rating.rating2 == "Tidak sesuai" ? colors.primary : colors.white
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: windowWidth / 30,
+                                        color: rating.rating2 == "Tidak sesuai" ? colors.white : colors.primary
+
+                                    }}>Tidak sesuai</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() =>
+                                    setRating({
+                                        ...rating,
+                                        rating2: 'Sesuai'
+                                    })
+                                } style={{
+                                    width: windowWidth / 3,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    padding: 10,
+                                    borderWidth: 1,
+                                    borderColor: colors.primary,
+                                    backgroundColor: rating.rating2 == "Sesuai" ? colors.primary : colors.white
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: windowWidth / 30,
+                                        color: rating.rating2 == "Sesuai" ? colors.white : colors.primary
+                                    }}>Sesuai</Text>
+                                </TouchableOpacity>
+
+                            </View>
+
+                            <View style={{
+                                marginTop: 10,
+                                flexDirection: 'row',
+                                justifyContent: 'space-around'
+                            }}>
+
+                                <TouchableOpacity onPress={() =>
+                                    setRating({
+                                        ...rating,
+                                        rating2: 'Kurang sesuai'
+                                    })
+                                } style={{
+                                    width: windowWidth / 3,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    padding: 10,
+                                    borderWidth: 1,
+                                    borderColor: colors.primary,
+                                    backgroundColor: rating.rating2 == "Kurang sesuai" ? colors.primary : colors.white
+
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: windowWidth / 30,
+                                        color: rating.rating2 == "Kurang sesuai" ? colors.white : colors.primary
+
+                                    }}>Kurang sesuai</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() =>
+                                        setRating({
+                                            ...rating,
+                                            rating2: 'Sangat sesuai'
+                                        })
+                                    }
+                                    style={{
+                                        width: windowWidth / 3,
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        padding: 10,
+                                        borderWidth: 1,
+                                        borderColor: colors.primary,
+                                        backgroundColor: rating.rating2 == "Sangat sesuai" ? colors.primary : colors.white
+                                    }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: windowWidth / 30,
+                                        color: rating.rating2 == "Sangat sesuai" ? colors.white : colors.primary
+                                    }}>Sangat Sesuai</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        {/* pertanyaan 2 */}
+
+                        {/* Pertanyaan 3 */}
+                        <View style={{
+                            paddingVertical: 10,
+                        }}>
+                            <View style={{
+                                flexDirection: 'row'
+                            }}>
+                                <Text>3. </Text>
+                                <Text style={{
+                                    fontFamily: fonts.secondary[600],
+                                    fontSize: windowWidth / 30,
+
+                                }}>Bagaimana pendapat Saudara tentang kecepatan waktu dalam memberikan pelayanan ?</Text>
+
+                            </View>
+                            <View style={{
+                                marginTop: 10,
+                                flexDirection: 'row',
+                                justifyContent: 'space-around'
+                            }}>
+
+                                <TouchableOpacity onPress={() =>
+                                    setRating({
+                                        ...rating,
+                                        rating3: 'Tidak sesuai'
+                                    })
+                                } style={{
+                                    width: windowWidth / 3,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    padding: 10,
+                                    borderWidth: 1,
+                                    borderColor: colors.primary,
+                                    backgroundColor: rating.rating3 == "Tidak sesuai" ? colors.primary : colors.white
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: windowWidth / 30,
+                                        color: rating.rating3 == "Tidak sesuai" ? colors.white : colors.primary
+
+                                    }}>Tidak sesuai</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() =>
+                                    setRating({
+                                        ...rating,
+                                        rating3: 'Sesuai'
+                                    })
+                                } style={{
+                                    width: windowWidth / 3,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    padding: 10,
+                                    borderWidth: 1,
+                                    borderColor: colors.primary,
+                                    backgroundColor: rating.rating3 == "Sesuai" ? colors.primary : colors.white
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: windowWidth / 30,
+                                        color: rating.rating3 == "Sesuai" ? colors.white : colors.primary
+                                    }}>Sesuai</Text>
+                                </TouchableOpacity>
+
+                            </View>
+
+                            <View style={{
+                                marginTop: 10,
+                                flexDirection: 'row',
+                                justifyContent: 'space-around'
+                            }}>
+
+                                <TouchableOpacity onPress={() =>
+                                    setRating({
+                                        ...rating,
+                                        rating3: 'Kurang sesuai'
+                                    })
+                                } style={{
+                                    width: windowWidth / 3,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    padding: 10,
+                                    borderWidth: 1,
+                                    borderColor: colors.primary,
+                                    backgroundColor: rating.rating3 == "Kurang sesuai" ? colors.primary : colors.white
+
+                                }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: windowWidth / 30,
+                                        color: rating.rating3 == "Kurang sesuai" ? colors.white : colors.primary
+
+                                    }}>Kurang sesuai</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() =>
+                                        setRating({
+                                            ...rating,
+                                            rating3: 'Sangat sesuai'
+                                        })
+                                    }
+                                    style={{
+                                        width: windowWidth / 3,
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        padding: 10,
+                                        borderWidth: 1,
+                                        borderColor: colors.primary,
+                                        backgroundColor: rating.rating3 == "Sangat sesuai" ? colors.primary : colors.white
+                                    }}>
+                                    <Text style={{
+                                        fontFamily: fonts.secondary[600],
+                                        fontSize: windowWidth / 30,
+                                        color: rating.rating3 == "Sangat sesuai" ? colors.white : colors.primary
+                                    }}>Sangat Sesuai</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        {/* pertanyaan 3 */}
+                    </View>
+                    <MyButton title="Kirim survey" warna={colors.secondary} onPress={() => {
+                        console.warn(rating)
+                        axios.post('https://carebptp.zavalabs.com/api/1add_rating.php', rating).then(res => {
+                            console.error(res.data);
+                            alert('Terima kasih atas partisipasi Anda dalam survey ini');
+                            setVis(false);
+                            navigation.navigate('MainApp');
+                        })
+
+                    }} radius={0} />
+                </Modal>
                 <MyCarouser jenis='study' />
 
 
@@ -207,6 +634,8 @@ export default function ({ navigation }) {
                 <MyInput value={data.materi_teknologi} onChangeText={x => setData({ ...data, materi_teknologi: x, })} label='Materi yang dibutuhkan' iconname='create-outline' />
 
 
+
+                <MyInput value={data.jumlah_peserta} onChangeText={x => setData({ ...data, jumlah_peserta: x, })} label='Jumlah Peserta' iconname='create-outline' />
                 <MyPicker
                     onValueChange={x => {
 
@@ -259,8 +688,6 @@ export default function ({ navigation }) {
                 {buka2 && <MyInput value={data.tujuan} onChangeText={x => setData({ ...data, tujuan: x, })} label='Lainnya : ' iconname='create-outline' />}
 
 
-                <MyInput value={data.jumlah_peserta} onChangeText={x => setData({ ...data, jumlah_peserta: x, })} label='Jumlah Peserta' iconname='create-outline' />
-
 
 
 
@@ -296,7 +723,7 @@ export default function ({ navigation }) {
                     }}
                 />
             )}
-        </SafeAreaView>
+        </View>
     );
 }
 

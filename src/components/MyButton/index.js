@@ -1,13 +1,14 @@
 import React from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import {fonts} from '../../utils/fonts';
-import {Icon} from 'react-native-elements';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { fonts } from '../../utils/fonts';
+import { Icon } from 'react-native-elements';
 
 export default function MyButton({
   title,
   warna,
   onPress,
   Icons,
+  fontSize = 14,
   radius = 10,
   colorText = 'white',
   fontWeight = 'normal',
@@ -23,7 +24,7 @@ export default function MyButton({
       <Text
         style={{
           color: colorText,
-          fontSize: 18,
+          fontSize: fontSize,
           left: 5,
           fontFamily: fonts.primary[600],
           // fontWeight: fontWeight,

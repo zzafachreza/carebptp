@@ -13,7 +13,7 @@ import { colors } from '../../utils/colors';
 import { MyButton, MyGap } from '../../components';
 import { Icon } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useIsFocused } from '@react-navigation/native';
+import { Link, useIsFocused } from '@react-navigation/native';
 import axios from 'axios';
 
 export default function Account({ navigation, route }) {
@@ -54,84 +54,95 @@ export default function Account({ navigation, route }) {
   };
 
   return (
-    <SafeAreaView>
-      <View style={{ padding: 10 }}>
+    <SafeAreaView style={{ padding: 10, flex: 1, }}>
+
+      <View style={{
+        flex: 1
+      }}>
         <View
           style={{
-            justifyContent: 'center',
-            alignItems: 'center',
+            marginVertical: 10,
             padding: 10,
+            backgroundColor: colors.white,
+            borderRadius: 10,
           }}>
           <Text
             style={{
               fontFamily: fonts.secondary[600],
-              fontSize: windowWidth / 20,
               color: colors.black,
             }}>
-            {user.nama_lengkap}
+            Nama Pengguna
           </Text>
           <Text
             style={{
               fontFamily: fonts.secondary[400],
-              fontSize: windowWidth / 20,
-              color: colors.black,
+              color: colors.primary,
             }}>
-            {user.nip}
+            {user.nama_lengkap}
           </Text>
         </View>
-        {/* data detail */}
-        <View style={{ padding: 10 }}>
-          {/* <MyButton
-            onPress={() => navigation.navigate('EditProfile', user)}
-            title="Edit Profile"
-            colorText={colors.white}
-            iconColor={colors.white}
-            warna={colors.secondary}
-            Icons="create-outline"
-          /> */}
-
-          <MyGap jarak={10} />
-          <View>
-            <View
-              style={{
-                marginVertical: 5,
-                padding: 10,
-                backgroundColor: colors.white,
-                borderRadius: 10,
-              }}>
-              <Text
-                style={{
-                  fontFamily: fonts.secondary[600],
-                  color: colors.black,
-                }}>
-                Profesi
-              </Text>
-              <Text
-                style={{
-                  fontFamily: fonts.secondary[400],
-                  color: colors.primary,
-                }}>
-                {user.profesi}
-              </Text>
-            </View>
 
 
-          </View>
+        <View
+          style={{
+            marginVertical: 10,
+            padding: 10,
+            backgroundColor: colors.white,
+            borderRadius: 10,
+          }}>
+          <Text
+            style={{
+              fontFamily: fonts.secondary[600],
+              color: colors.black,
+            }}>
+            Profesi
+          </Text>
+          <Text
+            style={{
+              fontFamily: fonts.secondary[400],
+              color: colors.primary,
+            }}>
+            {user.profesi}
+          </Text>
         </View>
-
-        {/* button */}
-        <View style={{ padding: 10 }}>
-          <MyButton
-            onPress={btnKeluar}
-            title="Keluar"
-            colorText={colors.white}
-            iconColor={colors.white}
-            warna={colors.primary}
-            Icons="log-out-outline"
-          />
-        </View>
+        <MyGap jarak={10} />
+        <MyButton
+          onPress={btnKeluar}
+          title="Keluar"
+          colorText={colors.white}
+          iconColor={colors.white}
+          warna={colors.secondary}
+          Icons="log-out-outline"
+        />
       </View>
-    </SafeAreaView>
+
+
+
+
+
+
+
+      <View style={{
+        flex: 1
+      }}>
+        <View style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: 20
+        }}>
+          <Text style={{
+            fontSize: windowWidth / 20,
+            fontFamily: fonts.secondary[600],
+            color: colors.black
+          }}>Kontak Kami</Text>
+        </View>
+        <MyButton onPress={() => Linking.openURL('https://api.whatsapp.com/send?phone=6281388038822')} Icons="logo-whatsapp" title="0813-8803-8822" warna={colors.primary} />
+        <MyGap jarak={10} />
+        <MyButton onPress={() => Linking.openURL('mailto:care.bptpsulawesitengah@gmail.com?subject=Hello%20Care%20BTPT')} Icons="mail-outline" title="care.bptpsulawesitengah@gmail.com" warna={colors.secondary} />
+      </View>
+
+
+    </SafeAreaView >
   );
 }
 
