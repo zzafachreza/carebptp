@@ -9,6 +9,7 @@ import {
   Dimensions,
   ImageBackground,
   SafeAreaView,
+  Linking,
 } from 'react-native';
 import { colors } from '../../utils/colors';
 import { fonts, windowWidth } from '../../utils/fonts';
@@ -172,6 +173,14 @@ export default function Login({ navigation }) {
               onPress={masuk}
             />
           )}
+          <MyGap jarak={10} />
+          <MyButton onPress={() => {
+
+
+            Linking.openURL('https://carebptp.zavalabs.com/care_panduan.pdf');
+
+          }} title="Panduan Aplikasi" warna={colors.danger} Icons="bookmarks-outline" />
+
         </View>
       </ScrollView>
       {
